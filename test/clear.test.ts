@@ -1,6 +1,6 @@
 import { clearAll, getSessionStorage, StorageConfig } from '../src';
 
-describe('clear', () => {
+describe('clearAll', () => {
   beforeEach(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
