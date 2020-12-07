@@ -2,6 +2,12 @@ import { clear } from '../src';
 
 describe('blah', () => {
   it('works', () => {
-    expect(typeof clear).toBe("function");
+    window.localStorage.setItem('ddd', 'dd');
+    expect(window.localStorage.length).toBe(1);
+    expect(typeof clear).toBe('function');
+
+    clear();
+
+    expect(window.localStorage.length).toBe(0);
   });
 });
