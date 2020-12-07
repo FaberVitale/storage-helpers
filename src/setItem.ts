@@ -6,10 +6,11 @@ export function setItem<T>(key: string, value: T, config?: StorageConfig<T>) {
   const getStorage = config?.getStorage || getLocalStorage;
   const serialize = config?.serialize || JSON.stringify;
   const onError = config?.onError || console.error;
+  const version = config?.version;
 
   try {
-    const normalizedKey = getNormalizedKey(key, config?.version);
-    const storage = getStorage(key);
+    const normalizedKey = getNormalizedKey(key, version);
+    const storage = getStorage(key, version);
 
     const serialized = serialize(value);
 

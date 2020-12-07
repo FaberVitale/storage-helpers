@@ -2,7 +2,7 @@ export interface StorageConfig<T> {
   /**
    * `storage` provider, defaults to `() => self.localStorage`
    */
-  getStorage?: (key?: string) => Storage;
+  getStorage?: (key?: string, version?: string) => Storage;
 
   /**
    * An error handler,
