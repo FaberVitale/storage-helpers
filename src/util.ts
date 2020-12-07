@@ -1,4 +1,5 @@
 export function getGlobalThis(): typeof globalThis {
+  /* eslint-disable no-restricted-globals */
   if (typeof globalThis !== 'undefined') {
     return globalThis;
   } else if (typeof self !== 'undefined') {
@@ -6,6 +7,7 @@ export function getGlobalThis(): typeof globalThis {
   } else {
     return window;
   }
+  /* eslint-enable no-restricted-globals */
 }
 
 export function getNormalizedKey(

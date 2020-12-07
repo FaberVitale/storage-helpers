@@ -7,8 +7,8 @@ describe('clear', () => {
 
     window.sessionStorage.setItem('a', 'a');
     window.sessionStorage.setItem('ab', 'ab');
-    window.localStorage.setItem("b", 'b');
-    window.localStorage.setItem("bc", 'bc');
+    window.localStorage.setItem('b', 'b');
+    window.localStorage.setItem('bc', 'bc');
 
     (window.localStorage.clear as any).mockClear();
     (window.sessionStorage.clear as any).mockClear();
@@ -30,7 +30,6 @@ describe('clear', () => {
     expect(window.localStorage.length).toBe(0);
   });
 
-
   it('erases all items from sessionStorage', () => {
     expect(window.sessionStorage.length).not.toBe(0);
     clear({ getStorage: getSessionStorage });
@@ -40,10 +39,12 @@ describe('clear', () => {
     expect(window.localStorage.length).not.toBe(0);
   });
 
-  it("handles errors using the provided function", () => {
+  it('handles errors using the provided function', () => {
     const config: StorageConfig<unknown> = {
       onError: jest.fn(),
-      getStorage: () => {throw new Error("message"); }
+      getStorage: () => {
+        throw new Error('message');
+      },
     };
 
     clear(config);
