@@ -19,7 +19,7 @@ export function getItem<T>(key: string, config?: StorageConfig<T>): T | null {
       output = hydrate(serialized);
     }
   } catch (err) {
-    onError?.(err, key);
+    onError?.(err, config);
   }
 
   return output;

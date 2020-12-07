@@ -15,6 +15,6 @@ export function setItem<T>(key: string, value: T, config?: StorageConfig<T>) {
 
     storage.setItem(normalizedKey, serialized);
   } catch (err) {
-    onError?.(err, key);
+    onError?.(err, config, key);
   }
 }

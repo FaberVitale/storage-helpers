@@ -11,7 +11,7 @@ export function key(
   try {
     return getStorage().key(index);
   } catch (err) {
-    onError?.(err, index);
+    onError?.(err, index, config);
   }
 
   return null;

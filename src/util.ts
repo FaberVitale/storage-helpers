@@ -20,3 +20,9 @@ export function getNormalizedKey(
 
   return key;
 }
+
+export function nothing() {
+  return null;
+}
+
+export function noop() {}

@@ -12,6 +12,6 @@ export function removeItem(key: string, config?: StorageConfig<unknown>): void {
 
     storage.removeItem(normalizedKey);
   } catch (err) {
-    onError?.(err, key);
+    onError?.(err, config, key);
   }
 }
