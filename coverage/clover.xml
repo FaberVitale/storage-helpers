@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1607356301694" clover="3.2.0">
+  <project timestamp="1607356301694" name="All files">
+    <metrics statements="64" coveredstatements="0" conditionals="98" coveredconditionals="0" methods="8" coveredmethods="0" elements="170" coveredelements="0" complexity="0" loc="64" ncloc="64" packages="1" files="8" classes="8"/>
+    <file name="clear.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/clear.ts">
+      <metrics statements="7" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="3" count="0" type="stmt"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="6" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="7" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="12" count="0" type="cond" truecount="0" falsecount="4"/>
+    </file>
+    <file name="getItem.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/getItem.ts">
+      <metrics statements="13" coveredstatements="0" conditionals="24" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="5" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="6" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="7" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="13" count="0" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="21" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="24" count="0" type="stmt"/>
+    </file>
+    <file name="index.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/index.ts">
+      <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="3" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+    </file>
+    <file name="key.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/key.ts">
+      <metrics statements="8" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="8" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="9" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="14" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="17" count="0" type="stmt"/>
+    </file>
+    <file name="providers.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/providers.ts">
+      <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="3" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+    </file>
+    <file name="removeItem.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/removeItem.ts">
+      <metrics statements="8" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="5" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="6" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="8" count="0" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="13" count="0" type="cond" truecount="0" falsecount="4"/>
+    </file>
+    <file name="setItem.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/setItem.ts">
+      <metrics statements="10" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="5" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="6" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="7" count="0" type="cond" truecount="0" falsecount="6"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="16" count="0" type="cond" truecount="0" falsecount="4"/>
+    </file>
+    <file name="util.ts" path="/Users/fabrizioarmandovitale/Documents/code/storage/src/util.ts">
+      <metrics statements="6" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="3" count="0" type="stmt"/>
+      <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>
