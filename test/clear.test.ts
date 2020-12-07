@@ -1,4 +1,4 @@
-import { clear, getSessionStorage, StorageConfig } from '../src';
+import { clearAll, getSessionStorage, StorageConfig } from '../src';
 
 describe('clear', () => {
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('clear', () => {
   it('erases all items from the default storage', () => {
     expect(window.localStorage.length).not.toBe(0);
 
-    clear();
+    clearAll();
     expect(window.localStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.localStorage.length).toBe(0);
   });
@@ -25,14 +25,14 @@ describe('clear', () => {
   it('erases all items from the localStorage', () => {
     expect(window.localStorage.length).not.toBe(0);
 
-    clear();
+    clearAll();
     expect(window.localStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.localStorage.length).toBe(0);
   });
 
   it('erases all items from sessionStorage', () => {
     expect(window.sessionStorage.length).not.toBe(0);
-    clear({ getStorage: getSessionStorage });
+    clearAll({ getStorage: getSessionStorage });
 
     expect(window.sessionStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.sessionStorage.length).toBe(0);
@@ -47,7 +47,7 @@ describe('clear', () => {
       },
     };
 
-    clear(config);
+    clearAll(config);
 
     expect(config.onError).toBeCalledTimes(1);
   });
