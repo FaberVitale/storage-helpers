@@ -1,11 +1,15 @@
-import { getGlobalThis, nothing, noop } from './util';
+import { nothing, noop } from './util';
 
 export function getLocalStorage(): Storage {
-  return getGlobalThis().localStorage;
+  return typeof localStorage === 'object' && localStorage
+    ? localStorage
+    : getNoopStorage();
 }
 
 export function getSessionStorage(): Storage {
-  return getGlobalThis().sessionStorage;
+  return typeof sessionStorage === 'object' && sessionStorage
+    ? sessionStorage
+    : getNoopStorage();
 }
 
 export function getNoopStorage(): Storage {
