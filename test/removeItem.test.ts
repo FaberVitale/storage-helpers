@@ -20,13 +20,13 @@ describe('removeItem', () => {
   });
 
   it('removes an item with input key from the default storage', () => {
-    const key = 'b';
+    expect(window.localStorage.getItem('b')).not.toBe(null);
+    removeItem('b');
+    expect(window.localStorage.getItem('b')).toBe(null);
 
-    expect(window.localStorage.getItem(key)).not.toBe(null);
-
-    removeItem(key);
-
-    expect(window.localStorage.getItem(key)).toBe(null);
+    expect(window.localStorage.getItem('bc')).not.toBe(null);
+    removeItem('bc', { getStorage: undefined });
+    expect(window.localStorage.getItem('bc')).toBe(null);
   });
 
   it('removes an item with input key from local storage', () => {

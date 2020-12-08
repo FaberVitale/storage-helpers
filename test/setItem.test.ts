@@ -1,8 +1,5 @@
 import { getSessionStorage, setItem, getNoopStorage } from '../src';
-
-const raisedError = new Error('dddd');
-
-const onError = jest.fn();
+import { onError, raisedError } from './test-utils';
 
 const tests: {
   args: Parameters<typeof setItem>;
@@ -72,6 +69,32 @@ const tests: {
     ],
     expected: { key: 'a', value: null, error: true },
     storage: null,
+  },
+  {
+    args: [
+      'a',
+      [],
+      {
+        getStorage: () => {
+          throw raisedError;
+        },
+        onError: undefined,
+      },
+    ],
+    expected: { key: 'a', value: null, error: true },
+    storage: null,
+  },
+  {
+    args: [
+      'a',
+      { a: [] },
+      {
+        getStorage: undefined,
+        onError: undefined,
+      },
+    ],
+    expected: { key: 'a', value: '{"a":[]}', error: true },
+    storage: 'local',
   },
 ];
 

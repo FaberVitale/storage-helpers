@@ -1,13 +1,14 @@
 import { StorageConfig } from './types';
 import { getLocalStorage } from './providers';
+import { resolveConfig } from './config';
 
 export function clearAll(config?: StorageConfig<unknown>) {
-  const getStorage = config?.getStorage || getLocalStorage;
-  const onError = config?.onError || console.error;
+  const resolvedConfig = resolveConfig(config);
+  const getStorage = resolvedConfig.getStorage || getLocalStorage;
 
   try {
     getStorage().clear();
   } catch (err) {
-    onError?.(err, config);
+    resolvedConfig.onError?.(err, config);
   }
 }

@@ -20,6 +20,12 @@ describe('clearAll', () => {
     clearAll();
     expect(window.localStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.localStorage.length).toBe(0);
+
+    window.localStorage.setItem('s', 's');
+    clearAll({ getStorage: undefined });
+
+    expect(window.localStorage.clear).toHaveBeenCalledTimes(2);
+    expect(window.localStorage.length).toBe(0);
   });
 
   it('erases all items from the localStorage', () => {

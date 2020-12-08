@@ -5,10 +5,14 @@ export interface StorageConfig<T> {
   getStorage?: (key?: string, version?: string) => Storage;
 
   /**
-   * An error handler,
+   * An optional error handler,
    * defaults to `console.error`.
    */
-  onError?: (raisedError: any, config: StorageConfig<T>, key?: string) => void;
+  onError?: (
+    raisedError: any,
+    config: StorageConfig<T> | undefined,
+    key?: string
+  ) => void;
 
   /**
    * Converts the value provided to `string`,
