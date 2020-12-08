@@ -1,12 +1,12 @@
 export function getNormalizedKey(
-  key: string,
+  key: unknown,
   version: string | undefined
 ): string {
   if (version) {
     return `${key}@${version}`;
   }
 
-  return key;
+  return key + '';
 }
 
 export function nothing() {

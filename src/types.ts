@@ -6,7 +6,7 @@ export interface StorageConfig<T> {
 
   /**
    * An error handler,
-   * defaults `to console.error`.
+   * defaults to `console.error`.
    */
   onError?: (raisedError: any, config: StorageConfig<T>, key?: string) => void;
 
