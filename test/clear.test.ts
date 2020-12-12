@@ -1,6 +1,6 @@
-import { clearAll, getSessionStorage, StorageConfig } from '../src';
+import { clearStorage, getSessionStorage, StorageConfig } from '../src';
 
-describe('clearAll', () => {
+describe('clearStorage', () => {
   beforeEach(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -17,12 +17,12 @@ describe('clearAll', () => {
   it('erases all items from the default storage', () => {
     expect(window.localStorage.length).not.toBe(0);
 
-    clearAll();
+    clearStorage();
     expect(window.localStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.localStorage.length).toBe(0);
 
     window.localStorage.setItem('s', 's');
-    clearAll({ getStorage: undefined });
+    clearStorage({ getStorage: undefined });
 
     expect(window.localStorage.clear).toHaveBeenCalledTimes(2);
     expect(window.localStorage.length).toBe(0);
@@ -31,14 +31,14 @@ describe('clearAll', () => {
   it('erases all items from the localStorage', () => {
     expect(window.localStorage.length).not.toBe(0);
 
-    clearAll();
+    clearStorage();
     expect(window.localStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.localStorage.length).toBe(0);
   });
 
   it('erases all items from sessionStorage', () => {
     expect(window.sessionStorage.length).not.toBe(0);
-    clearAll({ getStorage: getSessionStorage });
+    clearStorage({ getStorage: getSessionStorage });
 
     expect(window.sessionStorage.clear).toHaveBeenCalledTimes(1);
     expect(window.sessionStorage.length).toBe(0);
@@ -53,7 +53,7 @@ describe('clearAll', () => {
       },
     };
 
-    clearAll(config);
+    clearStorage(config);
 
     expect(config.onError).toBeCalledTimes(1);
   });

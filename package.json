@@ -1,7 +1,10 @@
 {
+  "name": "storage-helpers",
+  "author": "favitale",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/storage-helpers.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -13,29 +16,29 @@
   "sideEffects": false,
   "scripts": {
     "start": "tsdx watch",
+    "prebuild": "npm run build:clean",
     "build": "tsdx build",
+    "build:clean": "rimraf ./dist ./docs",
+    "prebuild:docs": "npm run build:clean",
+    "build:docs": "typedoc --out ./docs src",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
     }
   },
-  "name": "storage",
-  "author": "favitale",
-  "module": "dist/storage.esm.js",
   "size-limit": [
     {
-      "path": "dist/storage.cjs.production.min.js",
+      "path": "dist/storage-helpers.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/storage.esm.js",
+      "path": "dist/storage-helpers.esm.js",
       "limit": "10 KB"
     }
   ],
@@ -44,9 +47,11 @@
     "eslint": "^7.15.0",
     "husky": "^4.3.5",
     "jest-localstorage-mock": "^2.4.3",
+    "rimraf": "^3.0.2",
     "size-limit": "^4.9.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
+    "typedoc": "^0.19.2",
     "typescript": "^4.1.2"
   }
 }

@@ -1,9 +1,14 @@
-import { getItem, getNoopStorage, getSessionStorage, setItem } from '../src';
+import {
+  getStorageItem,
+  getNoopStorage,
+  getSessionStorage,
+  setStorageItem,
+} from '../src';
 import { raisedError, identity, onError } from './test-utils';
 
 const epochTime = 16075603000;
 
-describe('getItem', () => {
+describe('getStorageItem', () => {
   beforeEach(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -19,26 +24,30 @@ describe('getItem', () => {
   });
 
   it('uses default storage if none is provided', () => {
-    expect(getItem('b', { hydrate: identity })).toBe('b');
-    expect(getItem('bc', { getStorage: undefined, hydrate: identity })).toBe(
-      'bc'
-    );
+    expect(getStorageItem('b', { hydrate: identity })).toBe('b');
+    expect(
+      getStorageItem('bc', { getStorage: undefined, hydrate: identity })
+    ).toBe('bc');
   });
 
   it('returns null if a value is not inside the storage', () => {
     const unusedKey = '__NOT__HERE___';
 
-    expect(getItem(unusedKey)).toBe(null);
-    expect(getItem(unusedKey, { getStorage: getSessionStorage })).toBe(null);
-    expect(getItem(unusedKey, { getStorage: getNoopStorage })).toBe(null);
+    expect(getStorageItem(unusedKey)).toBe(null);
+    expect(getStorageItem(unusedKey, { getStorage: getSessionStorage })).toBe(
+      null
+    );
+    expect(getStorageItem(unusedKey, { getStorage: getNoopStorage })).toBe(
+      null
+    );
   });
 
   it('parses the returned value with the provided revirer', () => {
     expect(
-      getItem('a', { hydrate: identity, getStorage: getSessionStorage })
+      getStorageItem('a', { hydrate: identity, getStorage: getSessionStorage })
     ).toEqual('a');
     expect(
-      getItem('date', {
+      getStorageItem('date', {
         hydrate: val => new Date(val),
         getStorage: getSessionStorage,
       })
@@ -52,11 +61,11 @@ describe('getItem', () => {
     const key = 'du';
     const value = { a: 2, b: 2 };
 
-    setItem(key, value, config);
+    setStorageItem(key, value, config);
 
     expect(window.localStorage.getItem(key)).toBe(null);
 
-    expect(getItem(key, config)).toEqual(value);
+    expect(getStorageItem(key, config)).toEqual(value);
   });
 
   it('handles storage method errors with the provided function', () => {
@@ -68,7 +77,7 @@ describe('getItem', () => {
       onError,
     };
 
-    getItem(key, config);
+    getStorageItem(key, config);
     expect(onError).toBeCalledWith(raisedError, config, key);
   });
 });

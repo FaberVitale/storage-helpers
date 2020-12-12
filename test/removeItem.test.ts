@@ -1,11 +1,11 @@
 import {
   getLocalStorage,
   getSessionStorage,
-  removeItem,
+  removeStorageItem,
   StorageConfig,
 } from '../src';
 
-describe('removeItem', () => {
+describe('removeStorageItem', () => {
   beforeEach(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -21,11 +21,11 @@ describe('removeItem', () => {
 
   it('removes an item with input key from the default storage', () => {
     expect(window.localStorage.getItem('b')).not.toBe(null);
-    removeItem('b');
+    removeStorageItem('b');
     expect(window.localStorage.getItem('b')).toBe(null);
 
     expect(window.localStorage.getItem('bc')).not.toBe(null);
-    removeItem('bc', { getStorage: undefined });
+    removeStorageItem('bc', { getStorage: undefined });
     expect(window.localStorage.getItem('bc')).toBe(null);
   });
 
@@ -34,7 +34,7 @@ describe('removeItem', () => {
 
     expect(window.localStorage.getItem(key)).not.toBe(null);
 
-    removeItem(key, { getStorage: getLocalStorage });
+    removeStorageItem(key, { getStorage: getLocalStorage });
 
     expect(window.localStorage.getItem(key)).toBe(null);
   });
@@ -44,7 +44,7 @@ describe('removeItem', () => {
 
     expect(window.sessionStorage.getItem(key)).not.toBe(null);
 
-    removeItem(key, { getStorage: getSessionStorage });
+    removeStorageItem(key, { getStorage: getSessionStorage });
 
     expect(window.localStorage.getItem(key)).toBe(null);
   });
@@ -59,7 +59,7 @@ describe('removeItem', () => {
       },
     };
 
-    removeItem(key, config);
+    removeStorageItem(key, config);
 
     expect(config.onError).toBeCalledTimes(1);
   });

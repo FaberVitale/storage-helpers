@@ -1,8 +1,8 @@
-import { getSessionStorage, setItem, getNoopStorage } from '../src';
+import { getSessionStorage, setStorageItem, getNoopStorage } from '../src';
 import { onError, raisedError } from './test-utils';
 
 const tests: {
-  args: Parameters<typeof setItem>;
+  args: Parameters<typeof setStorageItem>;
   expected: { key: string; value: string | null; error?: boolean };
   storage: 'local' | 'session' | null;
 }[] = [
@@ -96,9 +96,22 @@ const tests: {
     expected: { key: 'a', value: '{"a":[]}', error: true },
     storage: 'local',
   },
+  {
+    args: [
+      'myKey',
+      { val: 4 },
+      {
+        version: 'v1',
+        hydrate: val => JSON.parse(atob(val)),
+        serialize: val => btoa(JSON.stringify(val)),
+      },
+    ],
+    expected: { key: 'myKey@v1', value: 'eyJ2YWwiOjR9' },
+    storage: 'local',
+  },
 ];
 
-describe('setItem', () => {
+describe('setStorageItem', () => {
   beforeEach(() => {
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -109,7 +122,7 @@ describe('setItem', () => {
   });
 
   it.each(tests)('%# %j', ({ args, expected, storage }) => {
-    setItem.apply(null, args);
+    setStorageItem.apply(null, args);
 
     let retrieved: ReturnType<Storage['getItem']>;
 

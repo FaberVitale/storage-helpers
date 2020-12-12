@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
-  setupFiles: ["./test/setupTests.js"]
-}
+  setupFiles: ['./test/setupTests.js'],
+};
