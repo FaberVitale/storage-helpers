@@ -1,8 +1,17 @@
+export interface StorageLike {
+  setItem(key: string, value: string): void;
+  getItem(key: string): string | null;
+  removeItem(key: string): void;
+  key(index: number): string | null;
+  clear(): void;
+  readonly length: number;
+}
+
 export interface StorageConfig<T> {
   /**
    * `storage` provider, defaults to `() => self.localStorage`
    */
-  getStorage?: (key?: string, version?: string) => Storage;
+  getStorage?: (key?: string, version?: string) => StorageLike;
 
   /**
    * An optional error handler,

@@ -1,25 +1,34 @@
-import { nothing, noop } from './util';
+import { StorageLike } from './types';
 
-export function getLocalStorage(): Storage {
+declare var localStorage: StorageLike | undefined;
+declare var sessionStorage: StorageLike | undefined;
+
+export function getLocalStorage(): StorageLike {
   return typeof localStorage === 'object' && localStorage
     ? localStorage
     : getNoopStorage();
 }
 
-export function getSessionStorage(): Storage {
+export function getSessionStorage(): StorageLike {
   return typeof sessionStorage === 'object' && sessionStorage
     ? sessionStorage
     : getNoopStorage();
 }
 
-export function getNoopStorage(): Storage {
-  return {
-    __STORAGE__: 'NoopStorage',
-    setItem: nothing,
-    getItem: nothing,
-    length: 0,
-    clear: noop,
-    key: nothing,
-    removeItem: nothing,
-  };
+class NoopStorage implements StorageLike {
+  readonly length: number = 0;
+  setItem() {
+    return null;
+  }
+  getItem() {
+    return null;
+  }
+  clear() {}
+  removeItem() {}
+  key() {
+    return null;
+  }
+}
+export function getNoopStorage(): StorageLike {
+  return new NoopStorage();
 }
