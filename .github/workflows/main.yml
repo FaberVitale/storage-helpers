@@ -1,9 +1,10 @@
 name: CI
 on: [push]
 jobs:
-  build:
+  build-node:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
+    env:
+      CI: "true"
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -17,7 +18,7 @@ jobs:
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }} # tests across multiple Node versions
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
@@ -30,3 +31,22 @@ jobs:
 
       - name: Build
         run: npm run build
+  build-deno:
+    name: Build, lint, and test on deno ${{ matrix.deno }} and ${{ matrix.os }}
+    env:
+      CI: "true"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        deno: ["1.6.0"]
+        os: [ubuntu-latest]
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
+      - name: Test
+        run: deno run ./mod.ts
