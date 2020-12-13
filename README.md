@@ -3,6 +3,11 @@
 
 WIP localStorage and sessionStorage utily functions
 
+## Changelog
+
+[Changelog](/CHANGELOG.md)
+
+
 ## License
 
 [MIT](/License)
