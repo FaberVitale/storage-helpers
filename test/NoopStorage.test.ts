@@ -1,4 +1,4 @@
-import { NoopStorage } from '../';
+import { NoopStorage } from '../src';
 
 describe('NoopStorage', () => {
   const storage = new NoopStorage();

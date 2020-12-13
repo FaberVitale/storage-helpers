@@ -268,14 +268,12 @@ export function key(
   config?: StorageConfig<unknown>
 ): string | null {
   const resolvedConfig = resolveConfig(config);
-
   const getStorage = resolvedConfig.getStorage || getLocalStorage;
-  const onError = resolvedConfig.onError || console.error;
 
   try {
     return getStorage().key(index);
   } catch (err) {
-    onError?.(err, index, config);
+    resolvedConfig.onError?.(err, config);
   }
 
   return null;
