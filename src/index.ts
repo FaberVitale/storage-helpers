@@ -71,15 +71,36 @@ export interface StorageConfig<T> {
    * ```typescript
    * const storageConfig = { version: "v1" };
    *
-   * // persists on `localStorage` the entry as `myKey@v1` -> `{"val":2}`
+   * // persists on `localStorage` the entry `myKey@v1` -> `{"val":2}`
    * setStorageItem("myKey", { val: 2 }, storageConfig);
    *
    * // returns `{ val: 2 }`
-   * getItem("myKey", storageConfig);
+   * getStorageItem("myKey", storageConfig);
    *
+   * // removes the entry `myKey@v1` -> `{"val":2}`.
+   * removeStorageItem("myKey", storageConfig);
    * ```
    */
   version?: string;
+
+  /**
+   * Optional key namespace that minimizes collisions.
+   *
+   * @example
+   * ```typescript
+   * const storageConfig = { version: "v1", namespace: "tracking" };
+   *
+   * // persists on `localStorage` the entry `[tracking]user@v1` -> `{"name":"Mark"}`
+   * setStorageItem("user", { name: "Mark" }, storageConfig);
+   *
+   * // returns `{"name":"Mark"}`
+   * getStorageItem("user", storageConfig);
+   *
+   * // removes the entry `[tracking]user@v1` -> `{"name":"Mark"}`.
+   * removeStorageItem("user", storageConfig);
+   * ```
+   */
+  namespace?: string;
 }
 
 declare var localStorage: StorageLike | undefined;
@@ -102,12 +123,21 @@ function resolveConfig<T>(inputConfig?: StorageConfig<T>): StorageConfig<T> {
   } as StorageConfig<T>;
 }
 
-function getNormalizedKey(key: unknown, version: string | undefined): string {
-  if (version) {
-    return `${key}@${version}`;
+function normalizeStorageKey<T = unknown>(
+  key: unknown,
+  config: StorageConfig<T>
+): string {
+  let output = key + '';
+
+  if (config.namespace) {
+    output = `[${config.namespace}]${output}`;
   }
 
-  return key + '';
+  if (config.version) {
+    output = `${output}@${config.version}`;
+  }
+
+  return output;
 }
 
 /**
@@ -197,7 +227,7 @@ export function getStorageItem<T>(
   let output: T | null = null;
 
   try {
-    const normalizedKey = getNormalizedKey(key, resolvedConfig.version);
+    const normalizedKey = normalizeStorageKey(key, resolvedConfig);
     const storage = getStorage(key, resolvedConfig.version);
 
     const serialized: string | null = storage.getItem(normalizedKey);
@@ -229,7 +259,7 @@ export function setStorageItem<T>(
   const serialize = resolvedConfig.serialize || JSON.stringify;
 
   try {
-    const normalizedKey = getNormalizedKey(key, resolvedConfig.version);
+    const normalizedKey = normalizeStorageKey(key, resolvedConfig);
     const storage = getStorage(key, resolvedConfig.version);
 
     const serialized = serialize(value);
@@ -250,15 +280,15 @@ export function setStorageItem<T>(
  * @see [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
  * @see [MDN/docs/Web/API/Window/localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  */
-export function removeStorageItem(
+export function removeStorageItem<T = unknown>(
   key: string,
-  config?: StorageConfig<unknown>
+  config?: StorageConfig<T>
 ): void {
   const resolvedConfig = resolveConfig(config);
   const getStorage = resolvedConfig.getStorage || getLocalStorage;
 
   try {
-    const normalizedKey = getNormalizedKey(key, resolvedConfig.version);
+    const normalizedKey = normalizeStorageKey(key, resolvedConfig);
     const storage = getStorage(key, resolvedConfig.version);
 
     storage.removeItem(normalizedKey);
@@ -274,9 +304,9 @@ export function removeStorageItem(
  * @param index
  * @param config
  */
-export function key(
+export function key<T = unknown>(
   index: number,
-  config?: StorageConfig<unknown>
+  config?: StorageConfig<T>
 ): string | null {
   const resolvedConfig = resolveConfig(config);
   const getStorage = resolvedConfig.getStorage || getLocalStorage;
@@ -299,7 +329,7 @@ export function key(
  * @see [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
  * @see [MDN/docs/Web/API/Window/localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  */
-export function clearStorage(config?: StorageConfig<unknown>) {
+export function clearStorage<T = unknown>(config?: StorageConfig<T>) {
   const resolvedConfig = resolveConfig(config);
   const getStorage = resolvedConfig.getStorage || getLocalStorage;
 

@@ -2,6 +2,7 @@ import {
   getLocalStorage,
   getSessionStorage,
   removeStorageItem,
+  setStorageItem,
   StorageConfig,
 } from '../src';
 
@@ -47,6 +48,34 @@ describe('removeStorageItem', () => {
     removeStorageItem(key, { getStorage: getSessionStorage });
 
     expect(window.localStorage.getItem(key)).toBe(null);
+  });
+
+  it('handles storageConfig.version correctly', () => {
+    const storageConfig = {
+      version: 'v1',
+    };
+
+    const val = { dd: 2 };
+    const storageLengthBefore = window.localStorage.length;
+
+    setStorageItem('key', val, storageConfig);
+    expect(window.localStorage.length).toBe(storageLengthBefore + 1);
+    removeStorageItem('key', storageConfig);
+    expect(window.localStorage.length).toBe(storageLengthBefore);
+  });
+
+  it('handles storageConfig.namespace correctly', () => {
+    const storageConfig = {
+      namespace: 'cookies',
+    };
+
+    const val = { dd: 2 };
+    const storageLengthBefore = window.localStorage.length;
+
+    setStorageItem('key', val, storageConfig);
+    expect(window.localStorage.length).toBe(storageLengthBefore + 1);
+    removeStorageItem('key', storageConfig);
+    expect(window.localStorage.length).toBe(storageLengthBefore);
   });
 
   it('handles errors using the provided function', () => {

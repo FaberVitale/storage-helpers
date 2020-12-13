@@ -109,6 +109,17 @@ const tests: {
     expected: { key: 'myKey@v1', value: 'eyJ2YWwiOjR9' },
     storage: 'local',
   },
+  {
+    args: [
+      'user',
+      { name: 'Mark' },
+      {
+        namespace: 'tracking',
+      },
+    ],
+    expected: { key: '[tracking]user', value: '{"name":"Mark"}' },
+    storage: 'local',
+  },
 ];
 
 describe('setStorageItem', () => {

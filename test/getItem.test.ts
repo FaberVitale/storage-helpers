@@ -68,6 +68,20 @@ describe('getStorageItem', () => {
     expect(getStorageItem(key, config)).toEqual(value);
   });
 
+  it('retrieves keys with namespace correctly', () => {
+    const config = {
+      namespace: 'toast',
+    };
+    const key = 'du';
+    const value = { a: 2, b: 2 };
+
+    setStorageItem(key, value, config);
+
+    expect(window.localStorage.getItem(key)).toBe(null);
+
+    expect(getStorageItem(key, config)).toEqual(value);
+  });
+
   it('handles storage method errors with the provided function', () => {
     const key = 'cab';
     const config = {
