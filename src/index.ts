@@ -113,7 +113,7 @@ function getNormalizedKey(key: unknown, version: string | undefined): string {
 /**
  * Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  * if present in the current environment
- * or falls back to a dummy [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
+ * or falls back to a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
  */
 export function getLocalStorage(): StorageLike {
   return typeof localStorage === 'object' && localStorage
@@ -124,7 +124,7 @@ export function getLocalStorage(): StorageLike {
 /**
  * Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
  * if present in the current environment
- * or falls back to a dummy [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)  that does not store values.
+ * or falls back to a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)  that does not store values.
  */
 export function getSessionStorage(): StorageLike {
   return typeof sessionStorage === 'object' && sessionStorage
@@ -132,12 +132,16 @@ export function getSessionStorage(): StorageLike {
     : NoopStorage.create();
 }
 
+/**
+ * A Dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values:
+ * - length is always `0`.
+ * - `setItem` and `removeItem` and `clear` have no effect.
+ * - `getItem` and `key` always return null.
+ *
+ */
 export class NoopStorage implements StorageLike {
   readonly length: number;
 
-  /**
-   * Static
-   */
   static create(): NoopStorage {
     return new NoopStorage();
   }
@@ -263,6 +267,13 @@ export function removeStorageItem(
   }
 }
 
+/**
+ * Given an input `n` returns the `nth` key of the storage provided in
+ * `config.getStorage` or uses {@link getLocalStorage}.
+ * Returns `null` if there's not a key at the requested position.
+ * @param index
+ * @param config
+ */
 export function key(
   index: number,
   config?: StorageConfig<unknown>
