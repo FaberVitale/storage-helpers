@@ -1,6 +1,6 @@
 import {
   getStorageItem,
-  getNoopStorage,
+  NoopStorage,
   getSessionStorage,
   setStorageItem,
 } from '../src';
@@ -37,7 +37,7 @@ describe('getStorageItem', () => {
     expect(getStorageItem(unusedKey, { getStorage: getSessionStorage })).toBe(
       null
     );
-    expect(getStorageItem(unusedKey, { getStorage: getNoopStorage })).toBe(
+    expect(getStorageItem(unusedKey, { getStorage: NoopStorage.create })).toBe(
       null
     );
   });

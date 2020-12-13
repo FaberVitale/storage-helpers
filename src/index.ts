@@ -1,4 +1,86 @@
-import { StorageConfig, StorageLike } from './types';
+/**
+ *  @see [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
+ */
+export interface StorageLike {
+  setItem(key: string, value: string): void;
+  getItem(key: string): string | null;
+  removeItem(key: string): void;
+  key(index: number): string | null;
+  clear(): void;
+  readonly length: number;
+}
+
+export interface StorageConfig<T> {
+  /**
+   * `storage` provider, defaults to {@link getLocalStorage}
+   */
+  getStorage?: (key?: string, version?: string) => StorageLike;
+
+  /**
+   * An optional error handler,
+   * defaults to `console.error`.
+   */
+  onError?: (
+    raisedError: unknown,
+    config: StorageConfig<T> | undefined,
+    key?: string
+  ) => void;
+
+  /**
+   * Converts the value provided to `string`,
+   * defaults to [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+   *
+   * @example
+   * ```typescript
+   * const serialize = (val: unknown) => btoa(JSON.serialize(val));
+   * const hydrate = (serialized: string) => JSON.parse(atob(serialized));
+   * const storageConfig = { serialize, hydrate };
+   *
+   * // stores `value` as base-64 string `eyJ2YWwiOjR9`.
+   * setStorageItem("myKey", { val: 4 }, storageConfig);
+   *
+   * // returns `{ val: 4 }`.
+   * getStorageItem("myKey", storageConfig);
+   * ```
+   */
+  serialize?: (val: T) => string;
+
+  /**
+   * Deserializes the value acquired from the local storage,
+   * defaults to [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+   *
+   * @example
+   * ```typescript
+   * const serialize = (val: unknown) => btoa(JSON.serialize(val));
+   * const hydrate = (serialized: string) => JSON.parse(atob(serialized));
+   * const storageConfig = { serialize, hydrate };
+   *
+   * // stores `value` as base-64 string `eyJ2YWwiOjR9`.
+   * setStorageItem("myKey", { val: 4 }, storageConfig);
+   *
+   * // returns `{ val: 4 }`.
+   * getStorageItem("myKey", storageConfig);
+   * ```
+   */
+  hydrate?: (val: string) => T;
+
+  /**
+   * Optional key versioning.
+   *
+   * @example
+   * ```typescript
+   * const storageConfig = { version: "v1" };
+   *
+   * // persists on `localStorage` the entry as `myKey@v1` -> `{"val":2}`
+   * setStorageItem("myKey", { val: 2 }, storageConfig);
+   *
+   * // returns `{ val: 2 }`
+   * getItem("myKey", storageConfig);
+   *
+   * ```
+   */
+  version?: string;
+}
 
 declare var localStorage: StorageLike | undefined;
 declare var sessionStorage: StorageLike | undefined;
@@ -36,7 +118,7 @@ function getNormalizedKey(key: unknown, version: string | undefined): string {
 export function getLocalStorage(): StorageLike {
   return typeof localStorage === 'object' && localStorage
     ? localStorage
-    : getNoopStorage();
+    : NoopStorage.create();
 }
 
 /**
@@ -47,13 +129,27 @@ export function getLocalStorage(): StorageLike {
 export function getSessionStorage(): StorageLike {
   return typeof sessionStorage === 'object' && sessionStorage
     ? sessionStorage
-    : getNoopStorage();
+    : NoopStorage.create();
 }
 
 export class NoopStorage implements StorageLike {
-  // @ts-ignore
-  get length() {
-    return 0;
+  readonly length: number;
+
+  /**
+   * Static
+   */
+  static create(): NoopStorage {
+    return new NoopStorage();
+  }
+
+  constructor() {
+    this.length = 0;
+
+    Object.defineProperty(this, 'length', {
+      enumerable: false,
+      configurable: false,
+      writable: false,
+    });
   }
 
   setItem(key: string, value: string): void;
@@ -71,61 +167,6 @@ export class NoopStorage implements StorageLike {
   key() {
     return null;
   }
-}
-
-const memoMap = Symbol('in-memory-cache');
-
-export class InMemoryStorage implements StorageLike {
-  private [memoMap] = new Map<string, string>();
-
-  setItem(key: string, value: string) {
-    this[memoMap].set(key + '', value + '');
-  }
-
-  getItem(key: string) {
-    const val = this[memoMap].get(key + '');
-    return typeof val === 'string' ? val : null;
-  }
-
-  removeItem(key: string) {
-    this[memoMap].delete(key + '');
-  }
-  // @ts-ignore
-  get length() {
-    return this[memoMap].size;
-  }
-
-  clear() {
-    this[memoMap].clear();
-  }
-
-  key(index: number) {
-    let output: null | string = null;
-    const keys = this[memoMap].keys();
-    let next,
-      count = 0;
-    while ((next = keys.next()) && !next.done) {
-      if (index === count) {
-        output = next.value;
-        break;
-      }
-      count++;
-    }
-
-    return output;
-  }
-}
-
-/**
- * Returns a dummy [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
- * instance of {@link NoopStorage} that does not store data.
- */
-export function getNoopStorage(): NoopStorage {
-  return new NoopStorage();
-}
-
-export function getInMemoryStorage(): InMemoryStorage {
-  return new InMemoryStorage();
 }
 
 /**
@@ -259,5 +300,3 @@ export function clearStorage(config?: StorageConfig<unknown>) {
     resolvedConfig.onError?.(err, config);
   }
 }
-
-export * from './types';

@@ -1,4 +1,4 @@
-import { getSessionStorage, setStorageItem, getNoopStorage } from '../src';
+import { getSessionStorage, setStorageItem, NoopStorage } from '../src';
 import { onError, raisedError } from './test-utils';
 
 const tests: {
@@ -49,7 +49,7 @@ const tests: {
       'a',
       [],
       {
-        getStorage: getNoopStorage,
+        getStorage: NoopStorage.create,
         onError,
       },
     ],
