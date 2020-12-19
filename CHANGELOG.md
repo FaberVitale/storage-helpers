@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/FaberVitale/storage-helpers/compare/v0.3.0...v0.4.0) (2020-12-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* renamed ./src/index.ts to ./src/storage-helpers.ts
+
+* added markdown documentation and expanded readme ([328887e](https://github.com/FaberVitale/storage-helpers/commit/328887ef08589764d934fa9679101af4442bf651))
+
 ## [0.3.0](https://github.com/FaberVitale/storage-helpers/compare/v0.2.0...v0.3.0) (2020-12-13)
 
 
