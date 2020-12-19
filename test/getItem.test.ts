@@ -3,7 +3,7 @@ import {
   NoopStorage,
   getSessionStorage,
   setStorageItem,
-} from '../src';
+} from '../src/storage-helpers';
 import { raisedError, identity, onError } from './test-utils';
 
 const epochTime = 16075603000;

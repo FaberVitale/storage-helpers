@@ -1,4 +1,5 @@
 /**
+ * An equivalent to `lib.dom.d.ts` Storage
  *  @see [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
  */
 export interface StorageLike {
@@ -10,6 +11,14 @@ export interface StorageLike {
   readonly length: number;
 }
 
+/**
+ * An optional configuration argument of all the helper functions
+ * of [storage-helpers](https://github.com/FaberVitale/storage-helpers) that enables to set:
+ * 1. The way data is serialized and hydrated.
+ * 2. Which storage is used.
+ * 3. key version and namespace.
+ * 4. How to handle exceptions.
+ */
 export interface StorageConfig<T> {
   /**
    * `storage` provider, defaults to {@link getLocalStorage}
@@ -143,7 +152,7 @@ function normalizeStorageKey<T = unknown>(
 /**
  * Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  * if present in the current environment
- * or falls back to a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
+ * or {@link NoopStorage}, a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
  */
 export function getLocalStorage(): StorageLike {
   return typeof localStorage === 'object' && localStorage
@@ -154,7 +163,7 @@ export function getLocalStorage(): StorageLike {
 /**
  * Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
  * if present in the current environment
- * or falls back to a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)  that does not store values.
+ * or {@link NoopStorage}, a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
  */
 export function getSessionStorage(): StorageLike {
   return typeof sessionStorage === 'object' && sessionStorage
@@ -163,11 +172,10 @@ export function getSessionStorage(): StorageLike {
 }
 
 /**
- * A Dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values:
+ * A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values:
  * - length is always `0`.
  * - `setItem` and `removeItem` and `clear` have no effect.
  * - `getItem` and `key` always return null.
- *
  */
 export class NoopStorage implements StorageLike {
   readonly length: number;
@@ -204,10 +212,10 @@ export class NoopStorage implements StorageLike {
 }
 
 /**
- * Retrieves a value indexed by key to the storage provided by
- * an optional `config.getStorage` or {@link getLocalStorage}.
+ * Retrieves a value indexed by the input key to
+ * an optional {@link StorageConfig.getStorage | `config.getStorage`} or uses {@link getLocalStorage}.
  *
- * The item returned by the storage is hydrated using `config.hydrate`, defaults
+ * The item returned by the storage is hydrated using {@link StorageConfig.hydrate | `config.hydrate`} or defaults
  * to `JSON.parse`.
  *
  * @param key
@@ -243,8 +251,46 @@ export function getStorageItem<T>(
 }
 
 /**
- * Adds the entry `key` -> `config.serialize(value)` inside a storage.
+ * Adds the entry `key` -> `config.serialize(value)` inside a storage
+ * provided by an optional
+ * {@link StorageConfig.getStorage | `config.getStorage`} or
+ * {@link getLocalStorage}.
  *
+ * ### Simple usage
+ * ```ts
+ * // Adds the entry `'user-conf' -> '{"colorScheme":"dark","locale":"es-ES"}'`
+ * // to `localStorage`
+ * setStorageItem("user-conf", { colorScheme: "dark", locale: 'es-ES' });
+ * ```
+ *
+ * ### Custom serialization/hydration
+ * ```ts
+ * const userConfKey = 'user-conf';
+ * const storageConfig = {
+ *  hydrate: val => JSON.parse(atob(val)),
+ *  serialize: val => btoa(JSON.stringify(val))},
+ * };
+ *
+ * // Stores the object using a custom serialization.
+ * setStorageItem(userConfKey,
+ *   { colorScheme: "dark", locale: 'es-ES' },
+ *   storageConfig
+ * );
+ *
+ * // Returns `{ colorScheme: "dark", locale: 'es-ES' }`
+ * getStorageItems(userConfKey, storageConfig);
+ *```
+ *
+ * ### Key namespace and version
+ * ```typescript
+ * const storageConfig = { version: "v1", namespace: "tracking" };
+ *
+ * // persists on `localStorage` the entry `[tracking]user@v1` -> `{"name":"Mark"}`
+ * setStorageItem("user", { name: "Mark" }, storageConfig);
+ *
+ * // returns `{"name":"Mark"}`
+ * getStorageItem("user", storageConfig);
+ * ```
  * @param key
  * @param value
  * @param config
@@ -272,7 +318,7 @@ export function setStorageItem<T>(
 
 /**
  * Removes an item indexed by `key` inside the storage provided by an optional
- * `config.getStorage` or uses {@link getLocalStorage}.
+ * {@link StorageConfig.getStorage | `config.getStorage`} or uses {@link getLocalStorage}.
  *
  * @param key
  * @param config
@@ -299,7 +345,8 @@ export function removeStorageItem<T = unknown>(
 
 /**
  * Given an input `n` returns the `nth` key of the storage provided in
- * `config.getStorage` or uses {@link getLocalStorage}.
+ * {@link StorageConfig.getStorage | `config.getStorage`} or uses {@link getLocalStorage}.
+ *
  * Returns `null` if there's not a key at the requested position.
  * @param index
  * @param config
@@ -322,7 +369,7 @@ export function key<T = unknown>(
 
 /**
  * Erases all items inside the storage provided by an optional
- * `config.getStorage` or falls back to {@link getLocalStorage}.
+ * {@link StorageConfig.getStorage | `config.getStorage`} or uses {@link getLocalStorage}.
  *
  * @param config
  *

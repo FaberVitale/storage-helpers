@@ -1,1 +1,1 @@
-export * from './src/index.ts';
+export * from './src/storage-helpers.ts';

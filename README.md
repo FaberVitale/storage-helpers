@@ -3,9 +3,28 @@
 
 WIP localStorage and sessionStorage utily functions
 
-## Changelog
+## Getting started
 
-[Changelog](/CHANGELOG.md)
+### node
+
+Add storage-helpers to package.json
+
+```bash
+  npm i storage-helpers --save
+```
+### deno
+
+Import directly in your typescript files
+
+```ts
+import { setStorageItem }  "https://deno.land/x/storage_helpers@v0.3.0/mod.ts";
+```
+
+
+### Documentation
+
+* [Storage helpers docs](./docs/modules/_storage_helpers_.md)
+* [Changelog](/CHANGELOG.md)
 
 
 ## License

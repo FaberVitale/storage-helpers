@@ -4,7 +4,7 @@ import {
   removeStorageItem,
   setStorageItem,
   StorageConfig,
-} from '../src';
+} from '../src/storage-helpers';
 
 describe('removeStorageItem', () => {
   beforeEach(() => {

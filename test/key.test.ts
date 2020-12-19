@@ -1,4 +1,4 @@
-import { key, StorageConfig } from '../src';
+import { key, StorageConfig } from '../src/storage-helpers';
 import { onError, raisedError } from './test-utils';
 
 describe('key', () => {

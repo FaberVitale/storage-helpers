@@ -1,4 +1,8 @@
-import { getSessionStorage, setStorageItem, NoopStorage } from '../src';
+import {
+  getSessionStorage,
+  setStorageItem,
+  NoopStorage,
+} from '../src/storage-helpers';
 import { onError, raisedError } from './test-utils';
 
 const tests: {

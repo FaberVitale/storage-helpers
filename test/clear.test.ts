@@ -1,4 +1,8 @@
-import { clearStorage, getSessionStorage, StorageConfig } from '../src';
+import {
+  clearStorage,
+  getSessionStorage,
+  StorageConfig,
+} from '../src/storage-helpers';
 
 describe('clearStorage', () => {
   beforeEach(() => {
