@@ -4,5 +4,6 @@
     "excludeNotExported": true,
     "readme": "./README.md",
     "publicPath": "/docs/",
-    "hideProjectName": true
+    "hideProjectName": true,
+    "gitRevision": "main"
 }

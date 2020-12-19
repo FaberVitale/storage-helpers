@@ -29,7 +29,7 @@
 
 ▸ **clearStorage**<T\>(`config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): void
 
-*Defined in [storage-helpers.ts:379](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L379)*
+*Defined in [storage-helpers.ts:379](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L379)*
 
 Erases all items inside the storage provided by an optional
 [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -58,7 +58,7 @@ ___
 
 ▸ **getLocalStorage**(): [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)
 
-*Defined in [storage-helpers.ts:157](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L157)*
+*Defined in [storage-helpers.ts:157](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L157)*
 
 Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 if present in the current environment
@@ -72,7 +72,7 @@ ___
 
 ▸ **getSessionStorage**(): [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)
 
-*Defined in [storage-helpers.ts:168](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L168)*
+*Defined in [storage-helpers.ts:168](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L168)*
 
 Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
 if present in the current environment
@@ -86,7 +86,7 @@ ___
 
 ▸ **getStorageItem**<T\>(`key`: string, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): T \| null
 
-*Defined in [storage-helpers.ts:227](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L227)*
+*Defined in [storage-helpers.ts:227](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L227)*
 
 Retrieves a value indexed by the input key to
 an optional [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -119,7 +119,7 @@ ___
 
 ▸ **key**<T\>(`index`: number, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): string \| null
 
-*Defined in [storage-helpers.ts:354](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L354)*
+*Defined in [storage-helpers.ts:354](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L354)*
 
 Given an input `n` returns the `nth` key of the storage provided in
 [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -147,7 +147,7 @@ ___
 
 ▸ **removeStorageItem**<T\>(`key`: string, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): void
 
-*Defined in [storage-helpers.ts:329](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L329)*
+*Defined in [storage-helpers.ts:329](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L329)*
 
 Removes an item indexed by `key` inside the storage provided by an optional
 [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -177,7 +177,7 @@ ___
 
 ▸ **setStorageItem**<T\>(`key`: string, `value`: T, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): void
 
-*Defined in [storage-helpers.ts:298](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L298)*
+*Defined in [storage-helpers.ts:298](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L298)*
 
 Adds the entry `key` -> `config.serialize(value)` inside a storage
 provided by an optional

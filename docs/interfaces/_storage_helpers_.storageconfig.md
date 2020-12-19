@@ -36,7 +36,7 @@ Name |
 
 • `Optional` **getStorage**: undefined \| (key?: undefined \| string, version?: undefined \| string) => [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)
 
-*Defined in [storage-helpers.ts:26](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L26)*
+*Defined in [storage-helpers.ts:26](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L26)*
 
 `storage` provider, defaults to [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage)
 
@@ -46,7 +46,7 @@ ___
 
 • `Optional` **hydrate**: undefined \| (val: string) => T
 
-*Defined in [storage-helpers.ts:74](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L74)*
+*Defined in [storage-helpers.ts:74](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L74)*
 
 Deserializes the value acquired from the local storage,
 defaults to [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
@@ -70,7 +70,7 @@ ___
 
 • `Optional` **namespace**: undefined \| string
 
-*Defined in [storage-helpers.ts:112](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L112)*
+*Defined in [storage-helpers.ts:112](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L112)*
 
 Optional key namespace that minimizes collisions.
 
@@ -94,7 +94,7 @@ ___
 
 • `Optional` **onError**: undefined \| (raisedError: unknown, config: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\> \| undefined, key?: undefined \| string) => void
 
-*Defined in [storage-helpers.ts:32](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L32)*
+*Defined in [storage-helpers.ts:32](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L32)*
 
 An optional error handler,
 defaults to `console.error`.
@@ -105,7 +105,7 @@ ___
 
 • `Optional` **serialize**: undefined \| (val: T) => string
 
-*Defined in [storage-helpers.ts:55](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L55)*
+*Defined in [storage-helpers.ts:55](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L55)*
 
 Converts the value provided to `string`,
 defaults to [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
@@ -129,7 +129,7 @@ ___
 
 • `Optional` **version**: undefined \| string
 
-*Defined in [storage-helpers.ts:93](https://github.com/FaberVitale/storage-helpers/blob/e0cd7bb/src/storage-helpers.ts#L93)*
+*Defined in [storage-helpers.ts:93](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L93)*
 
 Optional key versioning.
 
