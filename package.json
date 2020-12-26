@@ -4,7 +4,7 @@
   "version": "0.4.0",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/storage-helpers.esm.js",
+  "module": "dist/storage_helpers.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -28,7 +28,7 @@
   "scripts": {
     "start": "tsdx watch",
     "prebuild": "rimraf ./dist",
-    "build": "tsdx build -i './src/storage-helpers.ts'",
+    "build": "tsdx build --name storage_helpers --format cjs,esm,umd",
     "prebuild:docs": "rimraf ./docs",
     "build:docs": "typedoc --options './typedoc.md.json' ./src/ --plugin typedoc-plugin-markdown",
     "postbuild:docs": "rimraf ./docs/README.md",
@@ -46,11 +46,11 @@
   },
   "size-limit": [
     {
-      "path": "dist/storage-helpers.cjs.production.min.js",
+      "path": "dist/storage_helpers.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/storage-helpers.esm.js",
+      "path": "dist/storage_helpers.esm.js",
       "limit": "10 KB"
     }
   ],
