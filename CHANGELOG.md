@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/FaberVitale/storage-helpers/compare/v0.4.0...v0.4.1) (2020-12-26)
+
+
+### Features
+
+* **build:** add umd build ([cb4f5ee](https://github.com/FaberVitale/storage-helpers/commit/cb4f5ee7ae4f7d1a6721332ae12d4a8dbf510d24))
+
+
+### Bug Fixes
+
+* set correct author in Licences ([092acec](https://github.com/FaberVitale/storage-helpers/commit/092acecf29748984ee6e451302317c9ce3cb8230))
+* **ts:** broken ts module typings on node ([cea4dbc](https://github.com/FaberVitale/storage-helpers/commit/cea4dbc0c43131b1590e70ca58c79e625f807156))
+
 ## [0.4.0](https://github.com/FaberVitale/storage-helpers/compare/v0.3.0...v0.4.0) (2020-12-19)
 
 
