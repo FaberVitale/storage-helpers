@@ -118,18 +118,41 @@ declare var sessionStorage: StorageLike | undefined;
 const defaultConfig = {
   getStorage: getLocalStorage,
   hydrate: JSON.parse,
+  serialize: JSON.stringify,
   onError: console.error,
 } as const;
 
-function resolveConfig<T>(inputConfig?: StorageConfig<T>): StorageConfig<T> {
+type ResolvedStorageConfig<T> = Omit<
+  StorageConfig<T>,
+  'getStorage' | 'hydrate' | 'serialize'
+> &
+  Required<Pick<StorageConfig<T>, 'getStorage' | 'hydrate' | 'serialize'>>;
+
+function resolveConfig<T>(
+  inputConfig?: StorageConfig<T>
+): ResolvedStorageConfig<T> {
   if (!inputConfig) {
-    return defaultConfig as StorageConfig<T>;
+    return defaultConfig as ResolvedStorageConfig<T>;
   }
 
-  return {
+  const output = {
     ...defaultConfig,
     ...inputConfig,
-  } as StorageConfig<T>;
+  };
+
+  if (!output.hydrate) {
+    output.hydrate = defaultConfig.hydrate;
+  }
+
+  if (!output.serialize) {
+    output.serialize = defaultConfig.serialize;
+  }
+
+  if (!output.getStorage) {
+    output.getStorage = defaultConfig.getStorage;
+  }
+
+  return output;
 }
 
 function normalizeStorageKey<T = unknown>(
@@ -229,8 +252,8 @@ export function getStorageItem<T>(
   config?: StorageConfig<T>
 ): T | null {
   const resolvedConfig = resolveConfig(config);
-  const getStorage = resolvedConfig.getStorage || getLocalStorage;
-  const hydrate = resolvedConfig.hydrate || JSON.parse;
+  const getStorage = resolvedConfig.getStorage;
+  const hydrate = resolvedConfig.hydrate;
 
   let output: T | null = null;
 
@@ -301,8 +324,8 @@ export function setStorageItem<T>(
   config?: StorageConfig<T>
 ) {
   const resolvedConfig = resolveConfig(config);
-  const getStorage = resolvedConfig.getStorage || getLocalStorage;
-  const serialize = resolvedConfig.serialize || JSON.stringify;
+  const getStorage = resolvedConfig.getStorage;
+  const serialize = resolvedConfig.serialize;
 
   try {
     const normalizedKey = normalizeStorageKey(key, resolvedConfig);
@@ -331,7 +354,7 @@ export function removeStorageItem<T = unknown>(
   config?: StorageConfig<T>
 ): void {
   const resolvedConfig = resolveConfig(config);
-  const getStorage = resolvedConfig.getStorage || getLocalStorage;
+  const getStorage = resolvedConfig.getStorage;
 
   try {
     const normalizedKey = normalizeStorageKey(key, resolvedConfig);
@@ -356,7 +379,7 @@ export function key<T = unknown>(
   config?: StorageConfig<T>
 ): string | null {
   const resolvedConfig = resolveConfig(config);
-  const getStorage = resolvedConfig.getStorage || getLocalStorage;
+  const getStorage = resolvedConfig.getStorage;
 
   try {
     return getStorage().key(index);
@@ -378,7 +401,7 @@ export function key<T = unknown>(
  */
 export function clearStorage<T = unknown>(config?: StorageConfig<T>) {
   const resolvedConfig = resolveConfig(config);
-  const getStorage = resolvedConfig.getStorage || getLocalStorage;
+  const getStorage = resolvedConfig.getStorage;
 
   try {
     getStorage().clear();
