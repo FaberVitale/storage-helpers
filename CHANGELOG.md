@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/FaberVitale/storage-helpers/compare/v0.4.1...v0.4.2) (2020-12-31)
+
+
+### Features
+
+* add optional validation of the hydrated data retrieved ([3b25032](https://github.com/FaberVitale/storage-helpers/commit/3b2503203871264dd6fe2399feee50f87d1ff5ac))
+
 ### [0.4.1](https://github.com/FaberVitale/storage-helpers/compare/v0.4.0...v0.4.1) (2020-12-26)
 
 
