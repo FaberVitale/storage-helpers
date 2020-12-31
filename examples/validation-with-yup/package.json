@@ -1,0 +1,16 @@
+{
+  "name": "validation-with-yup",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "snowpack dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node postinstall.mjs"
+  },
+  "devDependencies": {
+    "snowpack": "^2.18.5"
+  },
+  "dependencies": {
+    "yup": "^0.32.8"
+  }
+}

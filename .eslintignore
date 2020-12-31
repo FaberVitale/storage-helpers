@@ -3,3 +3,4 @@ dist
 node_modules
 .github
 .eslintrc.js
+generated.*
