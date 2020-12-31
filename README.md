@@ -17,7 +17,7 @@ Add storage-helpers to package.json
 Import directly in your typescript files
 
 ```ts
-import { setStorageItem }  "https://deno.land/x/storage_helpers@v0.4.1/mod.ts";
+import { setStorageItem }  "https://deno.land/x/storage_helpers@v0.4.2/mod.ts";
 ```
 
 
