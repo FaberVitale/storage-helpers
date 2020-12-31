@@ -38,7 +38,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        deno: ["1.6.0"]
+        deno: ["1.6.2"]
         os: [ubuntu-latest]
     steps:
       - name: Setup repo
@@ -49,4 +49,4 @@ jobs:
         with:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
       - name: Test
-        run: deno run ./mod.ts
+        run: deno test ./deno_test
