@@ -29,7 +29,7 @@
 
 ▸ **clearStorage**<T\>(`config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): void
 
-*Defined in [storage-helpers.ts:402](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L402)*
+*Defined in [storage-helpers.ts:499](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L499)*
 
 Erases all items inside the storage provided by an optional
 [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -58,7 +58,7 @@ ___
 
 ▸ **getLocalStorage**(): [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)
 
-*Defined in [storage-helpers.ts:180](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L180)*
+*Defined in [storage-helpers.ts:270](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L270)*
 
 Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 if present in the current environment
@@ -72,7 +72,7 @@ ___
 
 ▸ **getSessionStorage**(): [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)
 
-*Defined in [storage-helpers.ts:191](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L191)*
+*Defined in [storage-helpers.ts:281](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L281)*
 
 Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
 if present in the current environment
@@ -86,13 +86,15 @@ ___
 
 ▸ **getStorageItem**<T\>(`key`: string, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): T \| null
 
-*Defined in [storage-helpers.ts:250](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L250)*
+*Defined in [storage-helpers.ts:341](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L341)*
 
 Retrieves a value indexed by the input key to
 an optional [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
 
 The item returned by the storage is hydrated using [`config.hydrate`](/docs/interfaces/_storage_helpers_.storageconfig.md#hydrate) or defaults
 to `JSON.parse`.
+
+If [`config.validateHydrated`](/docs/interfaces/_storage_helpers_.storageconfig.md#validatehydrated)
 
 **`see`** [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 
@@ -119,7 +121,7 @@ ___
 
 ▸ **key**<T\>(`index`: number, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): string \| null
 
-*Defined in [storage-helpers.ts:377](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L377)*
+*Defined in [storage-helpers.ts:474](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L474)*
 
 Given an input `n` returns the `nth` key of the storage provided in
 [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -147,7 +149,7 @@ ___
 
 ▸ **removeStorageItem**<T\>(`key`: string, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): void
 
-*Defined in [storage-helpers.ts:352](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L352)*
+*Defined in [storage-helpers.ts:449](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L449)*
 
 Removes an item indexed by `key` inside the storage provided by an optional
 [`config.getStorage`](/docs/interfaces/_storage_helpers_.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/_storage_helpers_.md#getlocalstorage).
@@ -177,7 +179,7 @@ ___
 
 ▸ **setStorageItem**<T\>(`key`: string, `value`: T, `config?`: [StorageConfig](/docs/interfaces/_storage_helpers_.storageconfig.md)<T\>): void
 
-*Defined in [storage-helpers.ts:321](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L321)*
+*Defined in [storage-helpers.ts:418](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L418)*
 
 Adds the entry `key` -> `config.serialize(value)` inside a storage
 provided by an optional

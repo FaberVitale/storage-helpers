@@ -94,4 +94,44 @@ describe('getStorageItem', () => {
     getStorageItem(key, config);
     expect(onError).toBeCalledWith(raisedError, config, key);
   });
+
+  it('discards the hydrated value if it fails the validation', () => {
+    const config = {
+      validateHydrated: (hydrated: unknown) => {
+        if (typeof hydrated !== 'number' || !Number.isSafeInteger(hydrated)) {
+          throw raisedError;
+        }
+      },
+      onError,
+    };
+
+    const intKey = 'int-key';
+
+    setStorageItem(intKey, {}, config);
+
+    const output = getStorageItem(intKey, config);
+
+    expect(output).toBe(null);
+    expect(onError).toBeCalledWith(raisedError, config, intKey);
+  });
+
+  it('returns the hydrated value if passes validation', () => {
+    const expected = 42;
+    const config = {
+      validateHydrated: (hydrated: unknown) => {
+        if (typeof hydrated !== 'number' || !Number.isSafeInteger(hydrated)) {
+          throw raisedError;
+        }
+      },
+      onError,
+    };
+
+    const intKey = 'int-key';
+
+    setStorageItem(intKey, expected, config);
+
+    const output = getStorageItem(intKey, config);
+
+    expect(output).toBe(expected);
+  });
 });

@@ -40,7 +40,7 @@ A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that
 
 \+ **new NoopStorage**(): [NoopStorage](/docs/classes/_storage_helpers_.noopstorage.md)
 
-*Defined in [storage-helpers.ts:208](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L208)*
+*Defined in [storage-helpers.ts:298](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L298)*
 
 **Returns:** [NoopStorage](/docs/classes/_storage_helpers_.noopstorage.md)
 
@@ -52,7 +52,7 @@ A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that
 
 *Implementation of [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md).[length](/docs/interfaces/_storage_helpers_.storagelike.md#length)*
 
-*Defined in [storage-helpers.ts:204](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L204)*
+*Defined in [storage-helpers.ts:294](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L294)*
 
 ## Methods
 
@@ -62,7 +62,7 @@ A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that
 
 *Implementation of [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)*
 
-*Defined in [storage-helpers.ts:226](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L226)*
+*Defined in [storage-helpers.ts:316](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L316)*
 
 **Returns:** void
 
@@ -74,7 +74,7 @@ ___
 
 *Implementation of [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)*
 
-*Defined in [storage-helpers.ts:222](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L222)*
+*Defined in [storage-helpers.ts:312](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L312)*
 
 #### Parameters:
 
@@ -92,7 +92,7 @@ ___
 
 *Implementation of [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)*
 
-*Defined in [storage-helpers.ts:231](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L231)*
+*Defined in [storage-helpers.ts:321](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L321)*
 
 #### Parameters:
 
@@ -110,7 +110,7 @@ ___
 
 *Implementation of [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)*
 
-*Defined in [storage-helpers.ts:228](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L228)*
+*Defined in [storage-helpers.ts:318](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L318)*
 
 #### Parameters:
 
@@ -128,7 +128,7 @@ ___
 
 *Implementation of [StorageLike](/docs/interfaces/_storage_helpers_.storagelike.md)*
 
-*Defined in [storage-helpers.ts:220](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L220)*
+*Defined in [storage-helpers.ts:310](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L310)*
 
 #### Parameters:
 
@@ -145,6 +145,6 @@ ___
 
 ▸ `Static`**create**(): [NoopStorage](/docs/classes/_storage_helpers_.noopstorage.md)
 
-*Defined in [storage-helpers.ts:206](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L206)*
+*Defined in [storage-helpers.ts:296](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L296)*
 
 **Returns:** [NoopStorage](/docs/classes/_storage_helpers_.noopstorage.md)

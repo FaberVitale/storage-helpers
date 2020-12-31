@@ -18,16 +18,44 @@ export interface StorageLike {
  * 2. Which storage is used.
  * 3. key version and namespace.
  * 4. How to handle exceptions.
+ * 5. Validation for hydrated data.
  */
 export interface StorageConfig<T> {
   /**
    * `storage` provider, defaults to {@link getLocalStorage}
+   *
+   * Used by
+   * - {@link setStorageItem}
+   * - {@link getStorageItem}
+   * - {@link removeStorageItem}
+   * - {@link key}
+   * - {@link clearStorage}
    */
   getStorage?: (key?: string, version?: string) => StorageLike;
 
   /**
    * An optional error handler,
    * defaults to `console.error`.
+   *
+   * Used by
+   * - {@link setStorageItem}
+   * - {@link getStorageItem}
+   * - {@link removeStorageItem}
+   * - {@link key}
+   * - {@link clearStorage}
+   *
+   * ### Custom logger example
+   * ```typescript
+   * const storageConfig = {
+   *  onError: (raisedError, ...rest) => {
+   *    exampleCustomLogger.error(raisedError, { info: rest }),
+   *  },
+   * };
+   *
+   * // In case of error `getStorageItem` returns null
+   * // and the error is logged using the function provided in the config.
+   * getStorageItem('user-conf', storageConfig);
+   * ```
    */
   onError?: (
     raisedError: unknown,
@@ -39,7 +67,10 @@ export interface StorageConfig<T> {
    * Converts the value provided to `string`,
    * defaults to [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
    *
-   * @example
+   * Used by
+   * - {@link setStorageItem}
+   *
+   * ### Example
    * ```typescript
    * const serialize = (val: unknown) => btoa(JSON.serialize(val));
    * const hydrate = (serialized: string) => JSON.parse(atob(serialized));
@@ -52,13 +83,16 @@ export interface StorageConfig<T> {
    * getStorageItem("myKey", storageConfig);
    * ```
    */
-  serialize?: (val: T) => string;
+  serialize?: (inputValue: T) => string;
 
   /**
    * Deserializes the value acquired from the local storage,
    * defaults to [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
    *
-   * @example
+   * Used by
+   * - {@link getStorageItem}
+   *
+   * ### Example
    * ```typescript
    * const serialize = (val: unknown) => btoa(JSON.serialize(val));
    * const hydrate = (serialized: string) => JSON.parse(atob(serialized));
@@ -71,10 +105,61 @@ export interface StorageConfig<T> {
    * getStorageItem("myKey", storageConfig);
    * ```
    */
-  hydrate?: (val: string) => T;
+  hydrate?: (serialized: string) => T;
+
+  /**
+   * Optional synchronous validation of the hydrated value retrieved by the storage:
+   *
+   * a function that raises an exception if the retrieved value is
+   * not valid.
+   *
+   * Used by
+   * - {@link getStorageItem}
+   *
+   * ### Simple usage
+   * ```typescript
+   * const storageConfig = {
+   *   validateHydrated: (val: unknown) => {
+   *     if(typeof val !== 'number' || !Number.isSafeInter(val)) {
+   *       throw new TypeError("bad value");
+   *     }
+   *   }
+   * };
+   *
+   * const finiteIntNum = 'finite-int-num';
+   *
+   * setStorageItem(finiteNum, {}, storageConfig); // persists value
+   * getStorageItem(finiteNum, storageConfig); // Incorrect value returns null.
+   * ```
+   *
+   * ### Validation using yup
+   * ```typescript
+   * const userSchema = yup.object().shape({
+   *   name: yup.string().defined(),
+   *   age: yup
+   *     .number()
+   *     .integer()
+   *     .min(0)
+   *     .defined(),
+   * });
+   *
+   * const config = {
+   *   validate: val => userSchema.validateSync(val),
+   * };
+   *
+   * setStorageItem('user', { name: 'Tom', age: -1 }, config); // persists value
+   * getStorageItem('user', config); // Incorrect value returns null.
+   * ```
+   */
+  validateHydrated?: (hydrated: unknown) => unknown;
 
   /**
    * Optional key versioning.
+   *
+   * Used by
+   * - {@link setStorageItem}
+   * - {@link getStorageItem}
+   * - {@link removeStorageItem}
    *
    * @example
    * ```typescript
@@ -93,7 +178,12 @@ export interface StorageConfig<T> {
   version?: string;
 
   /**
-   * Optional key namespace that minimizes collisions.
+   * Optional key namespace that can be added to minimize storage key collisions.
+   *
+   * Used by
+   * - {@link setStorageItem}
+   * - {@link getStorageItem}
+   * - {@link removeStorageItem}
    *
    * @example
    * ```typescript
@@ -241,6 +331,7 @@ export class NoopStorage implements StorageLike {
  * The item returned by the storage is hydrated using {@link StorageConfig.hydrate | `config.hydrate`} or defaults
  * to `JSON.parse`.
  *
+ * If {@link StorageConfig.validateHydrated | `config.validateHydrated`}
  * @param key
  * @param config
  *
@@ -254,6 +345,7 @@ export function getStorageItem<T>(
   const resolvedConfig = resolveConfig(config);
   const getStorage = resolvedConfig.getStorage;
   const hydrate = resolvedConfig.hydrate;
+  const validateHydrated = resolvedConfig.validateHydrated;
 
   let output: T | null = null;
 
@@ -265,8 +357,13 @@ export function getStorageItem<T>(
 
     if (typeof serialized === 'string') {
       output = hydrate(serialized);
+
+      if (typeof validateHydrated === 'function') {
+        validateHydrated(output);
+      }
     }
   } catch (err) {
+    output = null;
     resolvedConfig.onError?.(err, config, key);
   }
 
