@@ -2,7 +2,25 @@
 
 ## Description
 
-localStorage and sessionStorage utily functions.
+A set of tools to manage localStorage, sessionStorage and more that run on browsers, node and deno.
+
+
+## Simple example
+
+```ts
+const storageConfig = {
+  version: "v2",
+  namespace: "user-conf"
+};
+
+// persists on localStorage `[user-conf]i18n@v2` -> `{"locale":"es-ES","floatingPoint":"dot","unit":"metric"}`
+setStorageItem("i18n", { locale: 'es-ES', floatingPoint: 'dot', unit: 'metric' }, storageConfig);
+
+// returns `{"locale":"es-ES","floatingPoint":"dot","unit":"metric"}` hydrated
+getStorageItem("i18n", storageConfig);
+
+```
+
 
 ## Installation
 
@@ -15,7 +33,7 @@ Add [storage-helpers](https://www.npmjs.com/package/storage-helpers) to package.
 ```
 ### deno
 
-[Import](https://deno.land/x/storage_helpers@v0.4.2/mod.ts) directly in your typescript files
+[Import](https://deno.land/x/storage_helpers) directly in your typescript files
 
 ```ts
 import { setStorageItem }  "https://deno.land/x/storage_helpers@v0.4.2/mod.ts";
@@ -29,12 +47,15 @@ html files
   <script src="https://unpkg.com/storage-helpers@0.4.2/dist/storage_helpers.umd.production.min.js"></script>
 ```
 
-### Documentation
+---
 
-* [Storage helpers docs](./docs/modules/_storage_helpers_.md)
+## Documentation
+
+* [Storage helpers docs (github.com)](./docs/modules/_storage_helpers_.md)
 * [Storage helpers docs (doc.deno.land)](https://doc.deno.land/https/deno.land/x/storage_helpers/mod.ts)
+* [npm page](https://www.npmjs.com/package/storage-helpers)
+* [deno.land page](https://deno.land/x/storage_helpers)
 * [Changelog](/CHANGELOG.md)
-
 
 ## License
 
