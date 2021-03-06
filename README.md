@@ -4,6 +4,16 @@
 
 A set of tools to manage localStorage, sessionStorage and more that run on browsers, node and deno.
 
+## Main features
+
+* tiny, less than 1kB, and tree-shakable.
+
+* optional storage key versioning and namespace.
+
+* optional custom serialization and hydration logic.
+
+* high typescript type and test coverage.
+
 
 ## Simple example
 
@@ -20,7 +30,6 @@ setStorageItem("i18n", { locale: 'es-ES', floatingPoint: 'dot', unit: 'metric' }
 getStorageItem("i18n", storageConfig);
 
 ```
-
 
 ## Installation
 
