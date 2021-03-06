@@ -4,27 +4,35 @@
 
 localStorage and sessionStorage utily functions.
 
-## Getting started
+## Installation
 
 ### node
 
-Add storage-helpers to package.json
+Add [storage-helpers](https://www.npmjs.com/package/storage-helpers) to package.json
 
 ```bash
   npm i storage-helpers --save
 ```
 ### deno
 
-Import directly in your typescript files
+[Import](https://deno.land/x/storage_helpers@v0.4.2/mod.ts) directly in your typescript files
 
 ```ts
 import { setStorageItem }  "https://deno.land/x/storage_helpers@v0.4.2/mod.ts";
 ```
 
+### UMD build
+
+html files
+
+```html
+  <script src="https://unpkg.com/storage-helpers@0.4.2/dist/storage_helpers.umd.production.min.js"></script>
+```
 
 ### Documentation
 
 * [Storage helpers docs](./docs/modules/_storage_helpers_.md)
+* [Storage helpers docs (doc.deno.land)](https://doc.deno.land/https/deno.land/x/storage_helpers/mod.ts)
 * [Changelog](/CHANGELOG.md)
 
 
