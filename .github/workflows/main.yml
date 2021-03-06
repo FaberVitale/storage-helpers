@@ -38,7 +38,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        deno: ["1.6.2"]
+        deno: ["1.8.0"]
         os: [ubuntu-latest]
     steps:
       - name: Setup repo
