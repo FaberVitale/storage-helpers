@@ -12,8 +12,7 @@ A set of tools to manage localStorage, sessionStorage and more that run on brows
 
 * optional custom serialization and hydration logic.
 
-* high typescript type and test coverage.
-
+* optional validation of hydrated data.
 
 ## Simple example
 
