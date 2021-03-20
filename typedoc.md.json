@@ -1,9 +1,7 @@
 {
     "theme": "minimal",
     "out": "./docs",
-    "excludeNotExported": true,
     "readme": "./README.md",
     "publicPath": "/docs/",
-    "hideProjectName": true,
     "gitRevision": "main"
 }
