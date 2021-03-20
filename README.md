@@ -59,7 +59,7 @@ html files
 
 ## Documentation
 
-* [Storage helpers docs (github.com)](./docs/modules/_storage_helpers_.md)
+* [Storage helpers docs (github.com)](./docs/modules/storage_helpers.md)
 * [Storage helpers docs (doc.deno.land)](https://doc.deno.land/https/deno.land/x/storage_helpers/mod.ts)
 * [npm page](https://www.npmjs.com/package/storage-helpers)
 * [deno.land page](https://deno.land/x/storage_helpers)
