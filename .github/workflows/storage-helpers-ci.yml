@@ -40,13 +40,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: "pnpm --filter './packages/storage-helpers' run lint"
 
       - name: Test
-        run: npm run test --ci --coverage --maxWorkers=2
+        run: "pnpm --filter './packages/storage-helpers' run test -- --ci --coverage --maxWorkers=2"
 
       - name: Build
-        run: npm run build
+        run: "pnpm --filter './packages/storage-helpers' run build"
   build-deno:
     name: Build, lint, and test on deno ${{ matrix.deno }} and ${{ matrix.os }}
     env:
@@ -65,4 +65,4 @@ jobs:
         with:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
       - name: Test
-        run: deno test ./deno_test
+        run: deno test ./packages/storage-helpers/deno_test
