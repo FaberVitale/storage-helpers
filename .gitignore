@@ -3,6 +3,8 @@
 node_modules
 dist
 coverage
-yarn.lock
 generated.*
 build
+# Use only pnpm lock-file
+package-lock.json
+yarn.lock

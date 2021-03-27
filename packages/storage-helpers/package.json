@@ -1,0 +1,76 @@
+{
+  "name": "storage-helpers",
+  "author": "FaberVitale",
+  "version": "0.4.3",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/storage_helpers.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "localStorage",
+    "sessionStorage",
+    "storage",
+    "web",
+    "isomorphic"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FaberVitale/storage-helpers.git"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "start": "tsdx watch",
+    "prebuild": "rimraf ./dist",
+    "build": "tsdx build --name storage_helpers --format cjs,esm,umd",
+    "prebuild:docs": "rimraf ./docs",
+    "build:docs": "typedoc --options './typedoc.md.json' ./src/ --plugin typedoc-plugin-markdown",
+    "postbuild:docs": "rimraf ./docs/README.md",
+    "release": "standard-version",
+    "test": "tsdx test",
+    "type-coverage": "type-coverage",
+    "lint": "tsdx lint",
+    "prepare": "npm run build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint && type-coverage"
+    }
+  },
+  "size-limit": [
+    {
+      "path": "dist/storage_helpers.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/storage_helpers.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.9.1",
+    "eslint": "^7.22.0",
+    "husky": "^4.3.5",
+    "jest-localstorage-mock": "^2.4.3",
+    "rimraf": "^3.0.2",
+    "size-limit": "^4.10.1",
+    "standard-version": "^9.1.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "type-coverage": "^2.17.0",
+    "typedoc": "^0.20.0",
+    "typedoc-plugin-markdown": "^3.6.0",
+    "typescript": "^4.2.3"
+  },
+  "typeCoverage": {
+    "atLeast": 96
+  }
+}

@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "start": "snowpack dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "node postinstall.mjs"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "snowpack": "^2.18.5"
   },
   "dependencies": {
+    "storage-helpers": "workspace:*",
     "yup": "^0.32.8"
   }
 }

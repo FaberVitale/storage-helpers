@@ -1,5 +1,8 @@
 name: CI
-on: [push]
+on:
+  push:
+    paths:
+      - "packages/storage-helpers/**"
 jobs:
   build-node:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
@@ -8,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ["10.x", "12.x", "14.x"]
+        node: ["12.x", "14.x"]
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
@@ -20,8 +23,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }} # tests across multiple Node versions
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Get windows pnpm cache path
+        if: runner.os == 'windows'
+        run: echo "cache_path=D:\.pnpm-store\v3" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      - name: Get non-windows pnpm cache path
+        if: runner.os != 'windows'
+        run: echo "cache_path=~/.pnpm-store/v3" >> $GITHUB_ENV
+      - name: Cache ~/.pnpm-store
+        uses: actions/cache@main
+        with:
+          path: ${{ env.cache_path }}
+          key: ${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.node-version }}
+      - run: npm install -g pnpm
+      - run: pnpm install --frozen-lockfile
 
       - name: Lint
         run: npm run lint

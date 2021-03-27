@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import {
   getStorageItem,
   setStorageItem,
-} from '../public/generated.storage_helpers.esm';
+} from 'storage-helpers';
 
 const userSchema = yup.object().shape({
   name: yup.string().defined(),
@@ -27,3 +27,6 @@ setStorageItem(userKey, invalidUser, userConf);
 const hydrated = getStorageItem(userKey, userConf);
 
 console.log(hydrated);
+
+
+document.getElementById('result').textContent = JSON.stringify(hydrated);
