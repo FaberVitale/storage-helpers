@@ -43,7 +43,7 @@ jobs:
         run: "pnpm --filter './packages/storage-helpers' run lint"
 
       - name: Test
-        run: "pnpm --filter './packages/storage-helpers' run test -- --ci --coverage --maxWorkers=2"
+        run: "pnpm --filter './packages/storage-helpers' test:ci"
 
       - name: Build
         run: "pnpm --filter './packages/storage-helpers' run build"

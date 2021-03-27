@@ -34,6 +34,7 @@
     "postbuild:docs": "rimraf ./docs/README.md",
     "release": "standard-version",
     "test": "tsdx test",
+    "test:ci": "tsdx test --ci --coverage --maxWorkers=2",
     "type-coverage": "type-coverage",
     "lint": "tsdx lint",
     "prepare": "npm run build",
