@@ -7,18 +7,52 @@
     <title>Validation with yup</title>
     <script type="module" src="/dist/index.js"></script>
 </head>
+<style>
+    :root {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    #main {
+        padding: 1rem;
+        display: grid;
+        justify-content: center;
+        row-gap: 1rem;
+    }
+</style>
 
 <body>
-    <h1>Validaiton using yup</h1>
-
-    <p>Open the console to see the output</p>
-    <section>
-        <h2>
-            Hydration result
-        </h2>
-        <div id="result"></div>
-    </section>
-
+    <main id="main">
+        <h1>Validation using yup</h1>
+        <section>
+            <form id="user-form" action="#">
+                <label>age: <input name="age" type="number" min="-2" max="99" value="-1" /></label>
+                <label>name: </label><input name="name" type="text" value="Mark"></label>
+            </form>
+        </section>
+        <section>
+            <h2>Persisted value</h2>
+            <div id="persisted"></div>
+        </section>
+        <section>
+            <h2>
+                Hydrated value from storage
+            </h2>
+            <div id="result"></div>
+        </section>
+        <section>
+            <h2>Hydration Error</h2>
+            <div id="errors"></div>
+        </section>
+        <section>
+            <h2>Info</h2>
+            <p>Invalid hydrated values are not retrieved.<br>Open console for more details.</p>
+        </section>
+    </main>
 </body>
 
 </html>

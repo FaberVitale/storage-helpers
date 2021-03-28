@@ -8,15 +8,15 @@ This monorepo uses pnpm.
 npm i -g pnpm
 ```
 
-1. install dependencies
+1. install dependencies (working directory repository root)
 
 ```bash
 $ pnpm i
 ```
 
-2. start dev server
+2. start dev server (working directory repository root)
 
 ```bash
-$ pnpm start
+$  pnpm --filter=validation-with-yup run start
 ```
 
