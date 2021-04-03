@@ -245,6 +245,11 @@ function resolveConfig<T>(
   return output;
 }
 
+function noop() {}
+function nothing() {
+  return null;
+}
+
 function normalizeStorageKey<T = unknown>(
   key: unknown,
   config: StorageConfig<T>
@@ -290,39 +295,30 @@ export function getSessionStorage(): StorageLike {
  * - `setItem` and `removeItem` and `clear` have no effect.
  * - `getItem` and `key` always return null.
  */
-export class NoopStorage implements StorageLike {
-  readonly length: number;
+export const NoopStorage = {
+  create: (() => {
+    let instance: StorageLike | null = null;
 
-  static create(): NoopStorage {
-    return new NoopStorage();
-  }
+    return function create(this: void): StorageLike {
+      if (!instance) {
+        instance = {
+          length: 0,
+          setItem: noop,
+          getItem: nothing,
+          clear: noop,
+          removeItem: noop,
+          key: nothing,
+        };
 
-  constructor() {
-    this.length = 0;
+        if (typeof Object.freeze === 'function') {
+          Object.freeze(instance);
+        }
+      }
 
-    Object.defineProperty(this, 'length', {
-      enumerable: false,
-      configurable: false,
-      writable: false,
-    });
-  }
-
-  setItem(key: string, value: string): void;
-  setItem() {}
-  getItem(key: string): string | null;
-  getItem() {
-    return null;
-  }
-  clear() {}
-
-  removeItem(key: string): void;
-  removeItem() {}
-
-  key(index: number): string | null;
-  key() {
-    return null;
-  }
-}
+      return instance;
+    };
+  })(),
+};
 
 /**
  * Retrieves a value indexed by the input key to

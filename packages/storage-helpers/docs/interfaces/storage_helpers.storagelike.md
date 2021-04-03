@@ -8,11 +8,6 @@ An equivalent to `lib.dom.d.ts` Storage
 
 **`see`** [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 
-## Implemented by
-
-* [*NoopStorage*](/docs/classes/storage_helpers.noopstorage.md)
-* [*NoopStorage*](/docs/classes/index.noopstorage.md)
-
 ## Table of contents
 
 ### Properties
@@ -33,7 +28,7 @@ An equivalent to `lib.dom.d.ts` Storage
 
 • `Readonly` **length**: *number*
 
-Defined in: [storage-helpers.ts:11](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L11)
+Defined in: [storage-helpers.ts:11](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L11)
 
 ## Methods
 
@@ -43,7 +38,7 @@ Defined in: [storage-helpers.ts:11](https://github.com/FaberVitale/storage-helpe
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:10](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L10)
+Defined in: [storage-helpers.ts:10](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L10)
 
 ___
 
@@ -59,7 +54,7 @@ Name | Type |
 
 **Returns:** *null* \| *string*
 
-Defined in: [storage-helpers.ts:7](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L7)
+Defined in: [storage-helpers.ts:7](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L7)
 
 ___
 
@@ -75,7 +70,7 @@ Name | Type |
 
 **Returns:** *null* \| *string*
 
-Defined in: [storage-helpers.ts:9](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L9)
+Defined in: [storage-helpers.ts:9](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L9)
 
 ___
 
@@ -91,7 +86,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:8](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L8)
+Defined in: [storage-helpers.ts:8](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L8)
 
 ___
 
@@ -108,4 +103,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:6](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L6)
+Defined in: [storage-helpers.ts:6](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L6)

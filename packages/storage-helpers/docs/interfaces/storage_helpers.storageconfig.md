@@ -58,9 +58,9 @@ Name | Type |
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L34)
+Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L34)
 
-Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L34)
+Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L34)
 
 ___
 
@@ -99,9 +99,9 @@ Name | Type |
 
 **Returns:** T
 
-Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L108)
+Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L108)
 
-Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L108)
+Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L108)
 
 ___
 
@@ -130,7 +130,7 @@ getStorageItem("user", storageConfig);
 removeStorageItem("user", storageConfig);
 ```
 
-Defined in: [storage-helpers.ts:202](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L202)
+Defined in: [storage-helpers.ts:202](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L202)
 
 ___
 
@@ -175,9 +175,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:60](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L60)
+Defined in: [storage-helpers.ts:60](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L60)
 
-Defined in: [storage-helpers.ts:60](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L60)
+Defined in: [storage-helpers.ts:60](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L60)
 
 ___
 
@@ -216,9 +216,9 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [storage-helpers.ts:86](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L86)
+Defined in: [storage-helpers.ts:86](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L86)
 
-Defined in: [storage-helpers.ts:86](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L86)
+Defined in: [storage-helpers.ts:86](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L86)
 
 ___
 
@@ -281,9 +281,9 @@ Name | Type |
 
 **Returns:** *unknown*
 
-Defined in: [storage-helpers.ts:154](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L154)
+Defined in: [storage-helpers.ts:154](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L154)
 
-Defined in: [storage-helpers.ts:154](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L154)
+Defined in: [storage-helpers.ts:154](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L154)
 
 ___
 
@@ -312,4 +312,4 @@ getStorageItem("myKey", storageConfig);
 removeStorageItem("myKey", storageConfig);
 ```
 
-Defined in: [storage-helpers.ts:178](https://github.com/FaberVitale/storage-helpers/blob/main/src/storage-helpers.ts#L178)
+Defined in: [storage-helpers.ts:178](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L178)

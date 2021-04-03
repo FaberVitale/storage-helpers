@@ -1,14 +1,14 @@
 import { NoopStorage } from '../src/storage-helpers';
 
 describe('NoopStorage', () => {
-  const storage = new NoopStorage();
+  const storage = NoopStorage.create();
 
   beforeEach(() => {
     storage.clear();
     storage.setItem('key', 'val');
   });
 
-  test('NoopStorage does not ', () => {
+  test('NoopStorage does not store values', () => {
     storage.setItem('key', 'van');
 
     expect(storage.length).toBe(0);
