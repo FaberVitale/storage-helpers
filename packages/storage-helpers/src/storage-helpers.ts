@@ -250,23 +250,33 @@ function nothing() {
   return null;
 }
 
-function normalizeStorageKey<T = unknown>(
+/**
+ * Returns key, optionally enhanced with version and namespace, that is
+ * used to index storage values.
+ *
+ * Used by
+ * - {@link setStorageItem}
+ * - {@link getStorageItem}
+ * - {@link removeStorageItem}
+ * @param key
+ * @param config
+ */
+export function normalizeStorageKey<T = unknown>(
   key: unknown,
-  config: StorageConfig<T>
+  config?: StorageConfig<T>
 ): string {
   let output = key + '';
+  const namespace = config?.namespace;
+  const version = config?.version;
 
-  if (config.namespace) {
-    output = `[${config.namespace}]${output}`;
+  if (namespace) {
+    output = `[${namespace}]${output}`;
   }
 
-  if (config.version != null && config.version !== '') {
-    const version =
-      typeof config.version === 'number'
-        ? `v${config.version}`
-        : config.version;
+  if (version != null && version !== '') {
+    const ver = typeof version === 'number' ? `v${version}` : version;
 
-    output = `${output}@${version}`;
+    output = `${output}@${ver}`;
   }
 
   return output;

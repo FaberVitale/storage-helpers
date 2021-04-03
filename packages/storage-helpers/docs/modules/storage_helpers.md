@@ -20,6 +20,7 @@
 - [getSessionStorage](/docs/modules/storage_helpers.md#getsessionstorage)
 - [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
 - [key](/docs/modules/storage_helpers.md#key)
+- [normalizeStorageKey](/docs/modules/storage_helpers.md#normalizestoragekey)
 - [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
 - [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
 
@@ -48,7 +49,7 @@ Name | Type |
 :------ | :------ |
 `create` | () => [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md) |
 
-Defined in: [storage-helpers.ts:312](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L312)
+Defined in: [storage-helpers.ts:322](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L322)
 
 ## Functions
 
@@ -77,7 +78,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:510](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L510)
+Defined in: [storage-helpers.ts:520](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L520)
 
 ___
 
@@ -91,7 +92,7 @@ or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:321](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L321)
+Defined in: [storage-helpers.ts:331](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L331)
 
 ___
 
@@ -105,7 +106,7 @@ or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:332](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L332)
+Defined in: [storage-helpers.ts:342](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L342)
 
 ___
 
@@ -140,7 +141,7 @@ Name | Type |
 
 **Returns:** T \| *null*
 
-Defined in: [storage-helpers.ts:352](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L352)
+Defined in: [storage-helpers.ts:362](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L362)
 
 ___
 
@@ -168,7 +169,38 @@ Name | Type |
 
 **Returns:** *string* \| *null*
 
-Defined in: [storage-helpers.ts:485](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L485)
+Defined in: [storage-helpers.ts:495](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L495)
+
+___
+
+### normalizeStorageKey
+
+▸ **normalizeStorageKey**<T\>(`key`: *unknown*, `config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *string*
+
+Returns key, optionally enhanced with version and namespace, that is
+used to index storage values.
+
+Used by
+- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
+
+#### Type parameters:
+
+Name | Default |
+:------ | :------ |
+`T` | *unknown* |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`key` | *unknown* |
+`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+
+**Returns:** *string*
+
+Defined in: [storage-helpers.ts:264](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L264)
 
 ___
 
@@ -198,7 +230,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:460](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L460)
+Defined in: [storage-helpers.ts:470](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L470)
 
 ___
 
@@ -263,4 +295,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:429](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L429)
+Defined in: [storage-helpers.ts:439](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L439)

@@ -14,6 +14,7 @@
 - [getSessionStorage](/docs/modules/index.md#getsessionstorage)
 - [getStorageItem](/docs/modules/index.md#getstorageitem)
 - [key](/docs/modules/index.md#key)
+- [normalizeStorageKey](/docs/modules/index.md#normalizestoragekey)
 - [removeStorageItem](/docs/modules/index.md#removestorageitem)
 - [setStorageItem](/docs/modules/index.md#setstorageitem)
 
@@ -64,6 +65,12 @@ ___
 ### key
 
 Re-exports: [key](/docs/modules/storage_helpers.md#key)
+
+___
+
+### normalizeStorageKey
+
+Re-exports: [normalizeStorageKey](/docs/modules/storage_helpers.md#normalizestoragekey)
 
 ___
 
