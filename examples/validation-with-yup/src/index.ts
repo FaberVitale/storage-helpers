@@ -29,11 +29,10 @@ function init() {
     const userConf: StorageConfig<unknown> = {
       validateHydrated: (val: any) => userSchema.validateSync(val),
       version: 'v1',
-      onError: (raisedError) => {
+      onError: (raisedError: unknown) => {
         errors.textContent = (raisedError as { message?: string })?.message ?? 'error';
       }
     };
-
 
     const updateDisplayedValues = () => {
       const age =  Number(ageInput.value);

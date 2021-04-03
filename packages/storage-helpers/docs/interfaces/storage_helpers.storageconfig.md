@@ -22,88 +22,18 @@ Name |
 
 ### Properties
 
+- [namespace](/docs/interfaces/storage_helpers.storageconfig.md#namespace)
+- [version](/docs/interfaces/storage_helpers.storageconfig.md#version)
+
+### Methods
+
 - [getStorage](/docs/interfaces/storage_helpers.storageconfig.md#getstorage)
 - [hydrate](/docs/interfaces/storage_helpers.storageconfig.md#hydrate)
-- [namespace](/docs/interfaces/storage_helpers.storageconfig.md#namespace)
 - [onError](/docs/interfaces/storage_helpers.storageconfig.md#onerror)
 - [serialize](/docs/interfaces/storage_helpers.storageconfig.md#serialize)
 - [validateHydrated](/docs/interfaces/storage_helpers.storageconfig.md#validatehydrated)
-- [version](/docs/interfaces/storage_helpers.storageconfig.md#version)
 
 ## Properties
-
-### getStorage
-
-• `Optional` **getStorage**: (`key?`: *string*, `version?`: *string*) => [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
-
-`storage` provider, defaults to [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage)
-
-Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
-- [key](/docs/modules/storage_helpers.md#key)
-- [clearStorage](/docs/modules/storage_helpers.md#clearstorage)
-
-#### Type declaration:
-
-▸ (`key?`: *string*, `version?`: *string*): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
-
-#### Parameters:
-
-Name | Type |
-:------ | :------ |
-`key?` | *string* |
-`version?` | *string* |
-
-**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
-
-Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L34)
-
-Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L34)
-
-___
-
-### hydrate
-
-• `Optional` **hydrate**: (`serialized`: *string*) => T
-
-Deserializes the value acquired from the local storage,
-defaults to [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
-
-Used by
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-
-### Example
-```typescript
-const serialize = (val: unknown) => btoa(JSON.serialize(val));
-const hydrate = (serialized: string) => JSON.parse(atob(serialized));
-const storageConfig = { serialize, hydrate };
-
-// stores `value` as base-64 string `eyJ2YWwiOjR9`.
-setStorageItem("myKey", { val: 4 }, storageConfig);
-
-// returns `{ val: 4 }`.
-getStorageItem("myKey", storageConfig);
-```
-
-#### Type declaration:
-
-▸ (`serialized`: *string*): T
-
-#### Parameters:
-
-Name | Type |
-:------ | :------ |
-`serialized` | *string* |
-
-**Returns:** T
-
-Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L108)
-
-Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L108)
-
-___
 
 ### namespace
 
@@ -134,9 +64,105 @@ Defined in: [storage-helpers.ts:202](https://github.com/FaberVitale/storage-help
 
 ___
 
+### version
+
+• `Optional` **version**: *string* \| *number*
+
+Optional key versioning.
+
+Used by
+- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
+
+**`example`** 
+```typescript
+const storageConfig = { version: "v1" };
+
+// persists on `localStorage` the entry `myKey@v1` -> `{"val":2}`
+setStorageItem("myKey", { val: 2 }, storageConfig);
+
+// returns `{ val: 2 }`
+getStorageItem("myKey", storageConfig);
+
+// removes the entry `myKey@v1` -> `{"val":2}`.
+removeStorageItem("myKey", storageConfig);
+```
+
+Defined in: [storage-helpers.ts:178](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L178)
+
+## Methods
+
+### getStorage
+
+▸ `Optional`**getStorage**(`key`: *string*, `version`: *undefined* \| *string* \| *number*): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+
+`storage` provider, defaults to [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage)
+
+Used by
+- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
+- [key](/docs/modules/storage_helpers.md#key)
+- [clearStorage](/docs/modules/storage_helpers.md#clearstorage)
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`key` | *string* |
+`version` | *undefined* \| *string* \| *number* |
+
+**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+
+Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L34)
+
+▸ `Optional`**getStorage**(): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+
+**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+
+Defined in: [storage-helpers.ts:35](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L35)
+
+___
+
+### hydrate
+
+▸ `Optional`**hydrate**(`serialized`: *string*): T
+
+Deserializes the value acquired from the local storage,
+defaults to [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+
+Used by
+- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
+
+### Example
+```typescript
+const serialize = (val: unknown) => btoa(JSON.serialize(val));
+const hydrate = (serialized: string) => JSON.parse(atob(serialized));
+const storageConfig = { serialize, hydrate };
+
+// stores `value` as base-64 string `eyJ2YWwiOjR9`.
+setStorageItem("myKey", { val: 4 }, storageConfig);
+
+// returns `{ val: 4 }`.
+getStorageItem("myKey", storageConfig);
+```
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`serialized` | *string* |
+
+**Returns:** T
+
+Defined in: [storage-helpers.ts:108](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L108)
+
+___
+
 ### onError
 
-• `Optional` **onError**: (`raisedError`: *unknown*, `config`: *undefined* \| [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>, `key?`: *string*) => *void*
+▸ `Optional`**onError**(`raisedError`: *unknown*, `config`: *undefined* \| [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>, `key?`: *string*): *void*
 
 An optional error handler,
 defaults to `console.error`.
@@ -161,10 +187,6 @@ const storageConfig = {
 getStorageItem('user-conf', storageConfig);
 ```
 
-#### Type declaration:
-
-▸ (`raisedError`: *unknown*, `config`: *undefined* \| [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>, `key?`: *string*): *void*
-
 #### Parameters:
 
 Name | Type |
@@ -177,13 +199,11 @@ Name | Type |
 
 Defined in: [storage-helpers.ts:60](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L60)
 
-Defined in: [storage-helpers.ts:60](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L60)
-
 ___
 
 ### serialize
 
-• `Optional` **serialize**: (`inputValue`: T) => *string*
+▸ `Optional`**serialize**(`inputValue`: T): *string*
 
 Converts the value provided to `string`,
 defaults to [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
@@ -204,10 +224,6 @@ setStorageItem("myKey", { val: 4 }, storageConfig);
 getStorageItem("myKey", storageConfig);
 ```
 
-#### Type declaration:
-
-▸ (`inputValue`: T): *string*
-
 #### Parameters:
 
 Name | Type |
@@ -218,13 +234,11 @@ Name | Type |
 
 Defined in: [storage-helpers.ts:86](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L86)
 
-Defined in: [storage-helpers.ts:86](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L86)
-
 ___
 
 ### validateHydrated
 
-• `Optional` **validateHydrated**: (`hydrated`: *unknown*) => *unknown*
+▸ `Optional`**validateHydrated**(`hydrated`: *unknown*): *unknown*
 
 Optional synchronous validation of the hydrated value retrieved by the storage:
 
@@ -269,10 +283,6 @@ setStorageItem('user', { name: 'Tom', age: -1 }, config); // persists value
 getStorageItem('user', config); // Incorrect value returns null.
 ```
 
-#### Type declaration:
-
-▸ (`hydrated`: *unknown*): *unknown*
-
 #### Parameters:
 
 Name | Type |
@@ -282,34 +292,3 @@ Name | Type |
 **Returns:** *unknown*
 
 Defined in: [storage-helpers.ts:154](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L154)
-
-Defined in: [storage-helpers.ts:154](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L154)
-
-___
-
-### version
-
-• `Optional` **version**: *string*
-
-Optional key versioning.
-
-Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
-
-**`example`** 
-```typescript
-const storageConfig = { version: "v1" };
-
-// persists on `localStorage` the entry `myKey@v1` -> `{"val":2}`
-setStorageItem("myKey", { val: 2 }, storageConfig);
-
-// returns `{ val: 2 }`
-getStorageItem("myKey", storageConfig);
-
-// removes the entry `myKey@v1` -> `{"val":2}`.
-removeStorageItem("myKey", storageConfig);
-```
-
-Defined in: [storage-helpers.ts:178](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L178)

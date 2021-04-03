@@ -31,8 +31,8 @@ export interface StorageConfig<T> {
    * - {@link key}
    * - {@link clearStorage}
    */
-  getStorage?: (key?: string, version?: string) => StorageLike;
-
+  getStorage?(key: string, version: string | number | undefined): StorageLike;
+  getStorage?(): StorageLike;
   /**
    * An optional error handler,
    * defaults to `console.error`.
@@ -57,11 +57,11 @@ export interface StorageConfig<T> {
    * getStorageItem('user-conf', storageConfig);
    * ```
    */
-  onError?: (
+  onError?(
     raisedError: unknown,
     config: StorageConfig<T> | undefined,
     key?: string
-  ) => void;
+  ): void;
 
   /**
    * Converts the value provided to `string`,
@@ -83,7 +83,7 @@ export interface StorageConfig<T> {
    * getStorageItem("myKey", storageConfig);
    * ```
    */
-  serialize?: (inputValue: T) => string;
+  serialize?(inputValue: T): string;
 
   /**
    * Deserializes the value acquired from the local storage,
@@ -105,7 +105,7 @@ export interface StorageConfig<T> {
    * getStorageItem("myKey", storageConfig);
    * ```
    */
-  hydrate?: (serialized: string) => T;
+  hydrate?(serialized: string): T;
 
   /**
    * Optional synchronous validation of the hydrated value retrieved by the storage:
@@ -151,7 +151,7 @@ export interface StorageConfig<T> {
    * getStorageItem('user', config); // Incorrect value returns null.
    * ```
    */
-  validateHydrated?: (hydrated: unknown) => unknown;
+  validateHydrated?(hydrated: unknown): unknown;
 
   /**
    * Optional key versioning.
@@ -175,7 +175,7 @@ export interface StorageConfig<T> {
    * removeStorageItem("myKey", storageConfig);
    * ```
    */
-  version?: string;
+  version?: string | number;
 
   /**
    * Optional key namespace that can be added to minimize storage key collisions.
@@ -260,8 +260,13 @@ function normalizeStorageKey<T = unknown>(
     output = `[${config.namespace}]${output}`;
   }
 
-  if (config.version) {
-    output = `${output}@${config.version}`;
+  if (config.version != null && config.version !== '') {
+    const version =
+      typeof config.version === 'number'
+        ? `v${config.version}`
+        : config.version;
+
+    output = `${output}@${version}`;
   }
 
   return output;

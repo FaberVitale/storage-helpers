@@ -124,6 +124,11 @@ const tests: {
     expected: { key: '[tracking]user', value: '{"name":"Mark"}' },
     storage: 'local',
   },
+  {
+    args: ['k', '3', { version: 1 }],
+    expected: { key: 'k@v1', value: `"3"` },
+    storage: 'local',
+  },
 ];
 
 describe('setStorageItem', () => {

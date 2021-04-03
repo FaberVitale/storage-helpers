@@ -36,10 +36,9 @@ A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that
 
 ### Usage
 ```typescript
-const noopStorage = NoopStorage.create();
+ const noopStorage = NoopStorage.create();
 
 noopStorage.setItem('key', '43');
-noopStorage.length // 0
 noopStorage.getItem('key') // null
 ```
 
@@ -49,7 +48,7 @@ Name | Type |
 :------ | :------ |
 `create` | () => [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md) |
 
-Defined in: [storage-helpers.ts:307](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L307)
+Defined in: [storage-helpers.ts:312](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L312)
 
 ## Functions
 
@@ -78,7 +77,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:505](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L505)
+Defined in: [storage-helpers.ts:510](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L510)
 
 ___
 
@@ -92,7 +91,7 @@ or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:316](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L316)
+Defined in: [storage-helpers.ts:321](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L321)
 
 ___
 
@@ -106,7 +105,7 @@ or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:327](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L327)
+Defined in: [storage-helpers.ts:332](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L332)
 
 ___
 
@@ -141,7 +140,7 @@ Name | Type |
 
 **Returns:** T \| *null*
 
-Defined in: [storage-helpers.ts:347](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L347)
+Defined in: [storage-helpers.ts:352](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L352)
 
 ___
 
@@ -169,7 +168,7 @@ Name | Type |
 
 **Returns:** *string* \| *null*
 
-Defined in: [storage-helpers.ts:480](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L480)
+Defined in: [storage-helpers.ts:485](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L485)
 
 ___
 
@@ -199,7 +198,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:455](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L455)
+Defined in: [storage-helpers.ts:460](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L460)
 
 ___
 
@@ -264,4 +263,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:424](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L424)
+Defined in: [storage-helpers.ts:429](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L429)
