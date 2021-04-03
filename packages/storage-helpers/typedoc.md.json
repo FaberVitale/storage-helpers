@@ -2,6 +2,6 @@
     "theme": "minimal",
     "out": "./docs",
     "readme": "./README.md",
-    "publicPath": "/docs/",
+    "publicPath": "/packages/storage-helpers/docs/",
     "gitRevision": "main"
 }

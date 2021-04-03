@@ -1,4 +1,4 @@
-[storage-helpers](/docs/README.md) / Exports
+[storage-helpers](/packages/storage-helpers/docs/README.md) / Exports
 
 # storage-helpers
 
@@ -6,5 +6,5 @@
 
 ### Modules
 
-- [index](/docs/modules/index.md)
-- [storage-helpers](/docs/modules/storage_helpers.md)
+- [index](/packages/storage-helpers/docs/modules/index.md)
+- [storage-helpers](/packages/storage-helpers/docs/modules/storage_helpers.md)

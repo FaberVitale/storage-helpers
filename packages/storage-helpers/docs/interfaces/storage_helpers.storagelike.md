@@ -1,8 +1,8 @@
-[storage-helpers](/docs/README.md) / [Exports](/docs/modules.md) / [storage-helpers](/docs/modules/storage_helpers.md) / StorageLike
+[storage-helpers](/packages/storage-helpers/docs/README.md) / [Exports](/packages/storage-helpers/docs/modules.md) / [storage-helpers](/packages/storage-helpers/docs/modules/storage_helpers.md) / StorageLike
 
 # Interface: StorageLike
 
-[storage-helpers](/docs/modules/storage_helpers.md).StorageLike
+[storage-helpers](/packages/storage-helpers/docs/modules/storage_helpers.md).StorageLike
 
 An equivalent to `lib.dom.d.ts` Storage
 
@@ -12,15 +12,15 @@ An equivalent to `lib.dom.d.ts` Storage
 
 ### Properties
 
-- [length](/docs/interfaces/storage_helpers.storagelike.md#length)
+- [length](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md#length)
 
 ### Methods
 
-- [clear](/docs/interfaces/storage_helpers.storagelike.md#clear)
-- [getItem](/docs/interfaces/storage_helpers.storagelike.md#getitem)
-- [key](/docs/interfaces/storage_helpers.storagelike.md#key)
-- [removeItem](/docs/interfaces/storage_helpers.storagelike.md#removeitem)
-- [setItem](/docs/interfaces/storage_helpers.storagelike.md#setitem)
+- [clear](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md#clear)
+- [getItem](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md#getitem)
+- [key](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md#key)
+- [removeItem](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md#removeitem)
+- [setItem](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md#setitem)
 
 ## Properties
 

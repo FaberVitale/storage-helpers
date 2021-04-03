@@ -1,8 +1,8 @@
-[storage-helpers](/docs/README.md) / [Exports](/docs/modules.md) / [storage-helpers](/docs/modules/storage_helpers.md) / StorageConfig
+[storage-helpers](/packages/storage-helpers/docs/README.md) / [Exports](/packages/storage-helpers/docs/modules.md) / [storage-helpers](/packages/storage-helpers/docs/modules/storage_helpers.md) / StorageConfig
 
 # Interface: StorageConfig<T\>
 
-[storage-helpers](/docs/modules/storage_helpers.md).StorageConfig
+[storage-helpers](/packages/storage-helpers/docs/modules/storage_helpers.md).StorageConfig
 
 An optional configuration argument of all the helper functions
 of [storage-helpers](https://github.com/FaberVitale/storage-helpers) that enables to set:
@@ -22,16 +22,16 @@ Name |
 
 ### Properties
 
-- [namespace](/docs/interfaces/storage_helpers.storageconfig.md#namespace)
-- [version](/docs/interfaces/storage_helpers.storageconfig.md#version)
+- [namespace](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#namespace)
+- [version](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#version)
 
 ### Methods
 
-- [getStorage](/docs/interfaces/storage_helpers.storageconfig.md#getstorage)
-- [hydrate](/docs/interfaces/storage_helpers.storageconfig.md#hydrate)
-- [onError](/docs/interfaces/storage_helpers.storageconfig.md#onerror)
-- [serialize](/docs/interfaces/storage_helpers.storageconfig.md#serialize)
-- [validateHydrated](/docs/interfaces/storage_helpers.storageconfig.md#validatehydrated)
+- [getStorage](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#getstorage)
+- [hydrate](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#hydrate)
+- [onError](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#onerror)
+- [serialize](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#serialize)
+- [validateHydrated](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#validatehydrated)
 
 ## Properties
 
@@ -42,9 +42,9 @@ Name |
 Optional key namespace that can be added to minimize storage key collisions.
 
 Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#removestorageitem)
 
 **`example`** 
 ```typescript
@@ -71,9 +71,9 @@ ___
 Optional key versioning.
 
 Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#removestorageitem)
 
 **`example`** 
 ```typescript
@@ -95,16 +95,16 @@ Defined in: [storage-helpers.ts:178](https://github.com/FaberVitale/storage-help
 
 ### getStorage
 
-▸ `Optional`**getStorage**(`key`: *string*, `version`: *undefined* \| *string* \| *number*): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+▸ `Optional`**getStorage**(`key`: *string*, `version`: *undefined* \| *string* \| *number*): [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
-`storage` provider, defaults to [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage)
+`storage` provider, defaults to [getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage)
 
 Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
-- [key](/docs/modules/storage_helpers.md#key)
-- [clearStorage](/docs/modules/storage_helpers.md#clearstorage)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#removestorageitem)
+- [key](/packages/storage-helpers/docs/modules/storage_helpers.md#key)
+- [clearStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#clearstorage)
 
 #### Parameters:
 
@@ -113,13 +113,13 @@ Name | Type |
 `key` | *string* |
 `version` | *undefined* \| *string* \| *number* |
 
-**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+**Returns:** [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 Defined in: [storage-helpers.ts:34](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L34)
 
-▸ `Optional`**getStorage**(): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+▸ `Optional`**getStorage**(): [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
-**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+**Returns:** [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 Defined in: [storage-helpers.ts:35](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L35)
 
@@ -133,7 +133,7 @@ Deserializes the value acquired from the local storage,
 defaults to [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
 
 Used by
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
 
 ### Example
 ```typescript
@@ -162,17 +162,17 @@ ___
 
 ### onError
 
-▸ `Optional`**onError**(`raisedError`: *unknown*, `config`: *undefined* \| [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>, `key?`: *string*): *void*
+▸ `Optional`**onError**(`raisedError`: *unknown*, `config`: *undefined* \| [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>, `key?`: *string*): *void*
 
 An optional error handler,
 defaults to `console.error`.
 
 Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
-- [key](/docs/modules/storage_helpers.md#key)
-- [clearStorage](/docs/modules/storage_helpers.md#clearstorage)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#removestorageitem)
+- [key](/packages/storage-helpers/docs/modules/storage_helpers.md#key)
+- [clearStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#clearstorage)
 
 ### Custom logger example
 ```typescript
@@ -192,7 +192,7 @@ getStorageItem('user-conf', storageConfig);
 Name | Type |
 :------ | :------ |
 `raisedError` | *unknown* |
-`config` | *undefined* \| [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config` | *undefined* \| [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 `key?` | *string* |
 
 **Returns:** *void*
@@ -209,7 +209,7 @@ Converts the value provided to `string`,
 defaults to [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
 
 Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
 
 ### Example
 ```typescript
@@ -246,7 +246,7 @@ a function that raises an exception if the retrieved value is
 not valid.
 
 Used by
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
 
 ### Simple usage
 ```typescript

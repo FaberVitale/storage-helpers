@@ -1,4 +1,4 @@
-[storage-helpers](/docs/README.md) / [Exports](/docs/modules.md) / storage-helpers
+[storage-helpers](/packages/storage-helpers/docs/README.md) / [Exports](/packages/storage-helpers/docs/modules.md) / storage-helpers
 
 # Module: storage-helpers
 
@@ -6,23 +6,23 @@
 
 ### Interfaces
 
-- [StorageConfig](/docs/interfaces/storage_helpers.storageconfig.md)
-- [StorageLike](/docs/interfaces/storage_helpers.storagelike.md)
+- [StorageConfig](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)
+- [StorageLike](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 ### Variables
 
-- [NoopStorage](/docs/modules/storage_helpers.md#noopstorage)
+- [NoopStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#noopstorage)
 
 ### Functions
 
-- [clearStorage](/docs/modules/storage_helpers.md#clearstorage)
-- [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage)
-- [getSessionStorage](/docs/modules/storage_helpers.md#getsessionstorage)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [key](/docs/modules/storage_helpers.md#key)
-- [normalizeStorageKey](/docs/modules/storage_helpers.md#normalizestoragekey)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
+- [clearStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#clearstorage)
+- [getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage)
+- [getSessionStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getsessionstorage)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
+- [key](/packages/storage-helpers/docs/modules/storage_helpers.md#key)
+- [normalizeStorageKey](/packages/storage-helpers/docs/modules/storage_helpers.md#normalizestoragekey)
+- [removeStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#removestorageitem)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
 
 ## Variables
 
@@ -47,7 +47,7 @@ noopStorage.getItem('key') // null
 
 Name | Type |
 :------ | :------ |
-`create` | () => [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md) |
+`create` | () => [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md) |
 
 Defined in: [storage-helpers.ts:322](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L322)
 
@@ -55,10 +55,10 @@ Defined in: [storage-helpers.ts:322](https://github.com/FaberVitale/storage-help
 
 ### clearStorage
 
-▸ **clearStorage**<T\>(`config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *void*
+▸ **clearStorage**<T\>(`config?`: [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *void*
 
 Erases all items inside the storage provided by an optional
-[`config.getStorage`](/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage).
+[`config.getStorage`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage).
 
 **`see`** [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 
@@ -74,7 +74,7 @@ Name | Default |
 
 Name | Type |
 :------ | :------ |
-`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config?` | [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 
 **Returns:** *void*
 
@@ -84,13 +84,13 @@ ___
 
 ### getLocalStorage
 
-▸ **getLocalStorage**(): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+▸ **getLocalStorage**(): [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 if present in the current environment
 or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
-**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+**Returns:** [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 Defined in: [storage-helpers.ts:331](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L331)
 
@@ -98,13 +98,13 @@ ___
 
 ### getSessionStorage
 
-▸ **getSessionStorage**(): [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+▸ **getSessionStorage**(): [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
 if present in the current environment
 or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
-**Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
+**Returns:** [*StorageLike*](/packages/storage-helpers/docs/interfaces/storage_helpers.storagelike.md)
 
 Defined in: [storage-helpers.ts:342](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L342)
 
@@ -112,15 +112,15 @@ ___
 
 ### getStorageItem
 
-▸ **getStorageItem**<T\>(`key`: *string*, `config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): T \| *null*
+▸ **getStorageItem**<T\>(`key`: *string*, `config?`: [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>): T \| *null*
 
 Retrieves a value indexed by the input key to
-an optional [`config.getStorage`](/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage).
+an optional [`config.getStorage`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage).
 
-The item returned by the storage is hydrated using [`config.hydrate`](/docs/interfaces/storage_helpers.storageconfig.md#hydrate) or defaults
+The item returned by the storage is hydrated using [`config.hydrate`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#hydrate) or defaults
 to `JSON.parse`.
 
-If [`config.validateHydrated`](/docs/interfaces/storage_helpers.storageconfig.md#validatehydrated)
+If [`config.validateHydrated`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#validatehydrated)
 
 **`see`** [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 
@@ -137,7 +137,7 @@ Name |
 Name | Type |
 :------ | :------ |
 `key` | *string* |
-`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config?` | [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 
 **Returns:** T \| *null*
 
@@ -147,10 +147,10 @@ ___
 
 ### key
 
-▸ **key**<T\>(`index`: *number*, `config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *string* \| *null*
+▸ **key**<T\>(`index`: *number*, `config?`: [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *string* \| *null*
 
 Given an input `n` returns the `nth` key of the storage provided in
-[`config.getStorage`](/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage).
+[`config.getStorage`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage).
 
 Returns `null` if there's not a key at the requested position.
 
@@ -165,7 +165,7 @@ Name | Default |
 Name | Type |
 :------ | :------ |
 `index` | *number* |
-`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config?` | [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 
 **Returns:** *string* \| *null*
 
@@ -175,15 +175,15 @@ ___
 
 ### normalizeStorageKey
 
-▸ **normalizeStorageKey**<T\>(`key`: *unknown*, `config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *string*
+▸ **normalizeStorageKey**<T\>(`key`: *unknown*, `config?`: [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *string*
 
 Returns key, optionally enhanced with version and namespace, that is
 used to index storage values.
 
 Used by
-- [setStorageItem](/docs/modules/storage_helpers.md#setstorageitem)
-- [getStorageItem](/docs/modules/storage_helpers.md#getstorageitem)
-- [removeStorageItem](/docs/modules/storage_helpers.md#removestorageitem)
+- [setStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#setstorageitem)
+- [getStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#getstorageitem)
+- [removeStorageItem](/packages/storage-helpers/docs/modules/storage_helpers.md#removestorageitem)
 
 #### Type parameters:
 
@@ -196,7 +196,7 @@ Name | Default |
 Name | Type |
 :------ | :------ |
 `key` | *unknown* |
-`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config?` | [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 
 **Returns:** *string*
 
@@ -206,10 +206,10 @@ ___
 
 ### removeStorageItem
 
-▸ **removeStorageItem**<T\>(`key`: *string*, `config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *void*
+▸ **removeStorageItem**<T\>(`key`: *string*, `config?`: [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *void*
 
 Removes an item indexed by `key` inside the storage provided by an optional
-[`config.getStorage`](/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage).
+[`config.getStorage`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or uses [getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage).
 
 **`see`** [MDN/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 
@@ -226,7 +226,7 @@ Name | Default |
 Name | Type |
 :------ | :------ |
 `key` | *string* |
-`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config?` | [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 
 **Returns:** *void*
 
@@ -236,12 +236,12 @@ ___
 
 ### setStorageItem
 
-▸ **setStorageItem**<T\>(`key`: *string*, `value`: T, `config?`: [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *void*
+▸ **setStorageItem**<T\>(`key`: *string*, `value`: T, `config?`: [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\>): *void*
 
 Adds the entry `key` -> `config.serialize(value)` inside a storage
 provided by an optional
-[`config.getStorage`](/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or
-[getLocalStorage](/docs/modules/storage_helpers.md#getlocalstorage).
+[`config.getStorage`](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md#getstorage) or
+[getLocalStorage](/packages/storage-helpers/docs/modules/storage_helpers.md#getlocalstorage).
 
 ### Simple usage
 ```ts
@@ -291,7 +291,7 @@ Name | Type |
 :------ | :------ |
 `key` | *string* |
 `value` | T |
-`config?` | [*StorageConfig*](/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
+`config?` | [*StorageConfig*](/packages/storage-helpers/docs/interfaces/storage_helpers.storageconfig.md)<T\> |
 
 **Returns:** *void*
 
