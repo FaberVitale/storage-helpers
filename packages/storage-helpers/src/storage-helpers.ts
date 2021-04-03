@@ -267,58 +267,68 @@ function normalizeStorageKey<T = unknown>(
   return output;
 }
 
-/**
- * Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
- * if present in the current environment
- * or {@link NoopStorage}, a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
- */
-export function getLocalStorage(): StorageLike {
-  return typeof localStorage === 'object' && localStorage
-    ? localStorage
-    : NoopStorage.create();
-}
+const createNoopStorage = (() => {
+  let instance: StorageLike | null = null;
 
-/**
- * Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
- * if present in the current environment
- * or {@link NoopStorage}, a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
- */
-export function getSessionStorage(): StorageLike {
-  return typeof sessionStorage === 'object' && sessionStorage
-    ? sessionStorage
-    : NoopStorage.create();
-}
+  return function create(this: void): StorageLike {
+    if (!instance) {
+      instance = {
+        length: 0,
+        setItem: noop,
+        getItem: nothing,
+        clear: noop,
+        removeItem: noop,
+        key: nothing,
+      };
+
+      if (typeof Object.freeze === 'function') {
+        Object.freeze(instance);
+      }
+    }
+
+    return instance;
+  };
+})();
 
 /**
  * A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values:
  * - length is always `0`.
  * - `setItem` and `removeItem` and `clear` have no effect.
  * - `getItem` and `key` always return null.
+ *
+ * ### Usage
+ * ```typescript
+ *  const noopStorage = NoopStorage.create();
+ *
+ * noopStorage.setItem('key', '43');
+ * noopStorage.getItem('key') // null
+ * ```
  */
 export const NoopStorage = {
-  create: (() => {
-    let instance: StorageLike | null = null;
+  create: createNoopStorage,
+} as const;
 
-    return function create(this: void): StorageLike {
-      if (!instance) {
-        instance = {
-          length: 0,
-          setItem: noop,
-          getItem: nothing,
-          clear: noop,
-          removeItem: noop,
-          key: nothing,
-        };
+/**
+ * Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+ * if present in the current environment
+ * or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
+ */
+export function getLocalStorage(): StorageLike {
+  return typeof localStorage === 'object' && localStorage
+    ? localStorage
+    : createNoopStorage();
+}
 
-        if (typeof Object.freeze === 'function') {
-          Object.freeze(instance);
-        }
-      }
-
-      return instance;
-    };
-  })(),
-};
+/**
+ * Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
+ * if present in the current environment
+ * or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
+ */
+export function getSessionStorage(): StorageLike {
+  return typeof sessionStorage === 'object' && sessionStorage
+    ? sessionStorage
+    : createNoopStorage();
+}
 
 /**
  * Retrieves a value indexed by the input key to

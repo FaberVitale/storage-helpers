@@ -34,13 +34,22 @@ A dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that
 - `setItem` and `removeItem` and `clear` have no effect.
 - `getItem` and `key` always return null.
 
+### Usage
+```typescript
+const noopStorage = NoopStorage.create();
+
+noopStorage.setItem('key', '43');
+noopStorage.length // 0
+noopStorage.getItem('key') // null
+```
+
 #### Type declaration:
 
 Name | Type |
 :------ | :------ |
 `create` | () => [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md) |
 
-Defined in: [storage-helpers.ts:298](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L298)
+Defined in: [storage-helpers.ts:307](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L307)
 
 ## Functions
 
@@ -69,7 +78,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:495](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L495)
+Defined in: [storage-helpers.ts:505](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L505)
 
 ___
 
@@ -79,11 +88,11 @@ ___
 
 Returns [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 if present in the current environment
-or [NoopStorage](/docs/modules/storage_helpers.md#noopstorage), a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
+or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:275](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L275)
+Defined in: [storage-helpers.ts:316](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L316)
 
 ___
 
@@ -93,11 +102,11 @@ ___
 
 Returns [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
 if present in the current environment
-or [NoopStorage](/docs/modules/storage_helpers.md#noopstorage), a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) that does not store values.
+or a dummy [storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
 
 **Returns:** [*StorageLike*](/docs/interfaces/storage_helpers.storagelike.md)
 
-Defined in: [storage-helpers.ts:286](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L286)
+Defined in: [storage-helpers.ts:327](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L327)
 
 ___
 
@@ -132,7 +141,7 @@ Name | Type |
 
 **Returns:** T \| *null*
 
-Defined in: [storage-helpers.ts:337](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L337)
+Defined in: [storage-helpers.ts:347](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L347)
 
 ___
 
@@ -160,7 +169,7 @@ Name | Type |
 
 **Returns:** *string* \| *null*
 
-Defined in: [storage-helpers.ts:470](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L470)
+Defined in: [storage-helpers.ts:480](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L480)
 
 ___
 
@@ -190,7 +199,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:445](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L445)
+Defined in: [storage-helpers.ts:455](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L455)
 
 ___
 
@@ -255,4 +264,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [storage-helpers.ts:414](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L414)
+Defined in: [storage-helpers.ts:424](https://github.com/FaberVitale/storage-helpers/blob/main/packages/storage-helpers/src/storage-helpers.ts#L424)
