@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/FaberVitale/storage-helpers/compare/v0.4.3...v0.5.0) (2021-04-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* NoopStorage is no longer an es6 class
+
+### Features
+
+* expose normalizeStorageKey ([8ec2882](https://github.com/FaberVitale/storage-helpers/commit/8ec2882df30d46f1ada7d461645232dcac78ed01))
+* support version passed as nuber ([3c51ae4](https://github.com/FaberVitale/storage-helpers/commit/3c51ae4056efe8507c4331ac29b833d4fb142ffc))
+
+
+### Bug Fixes
+
+* **ci:** broken pipeline on windows ([91f5802](https://github.com/FaberVitale/storage-helpers/commit/91f58026f188b341868c6bdba02d05adee452105))
+* **docs:** broken internal links ([fcce612](https://github.com/FaberVitale/storage-helpers/commit/fcce6120d65b7867283319727cac270ed4154183))
+* **docs:** broken links ([a3cc56d](https://github.com/FaberVitale/storage-helpers/commit/a3cc56dc95bb2a859ea30f7a6e024536fc249ded))
+* **docs:** README  broken link ([daf1d5e](https://github.com/FaberVitale/storage-helpers/commit/daf1d5e3a6975b139f99059c43327e6524726784))
+* **lint:** eslint configuration ([ff52dab](https://github.com/FaberVitale/storage-helpers/commit/ff52dab2ca3f20980cd1e9bc8341b3cc40ca9423))
+* **readme:** type-coverage badge ([23ab43c](https://github.com/FaberVitale/storage-helpers/commit/23ab43cf9fdcefaf8fb48e6d3889e2bf0f61fe8a))
+
+
+* make noopStorage a singleton ([efb64b1](https://github.com/FaberVitale/storage-helpers/commit/efb64b1a8e3dd6d70af7515d5924377413181836))
+
 ### [0.4.3](https://github.com/FaberVitale/storage-helpers/compare/v0.4.2...v0.4.3) (2021-03-06)
 
 ### [0.4.2](https://github.com/FaberVitale/storage-helpers/compare/v0.4.1...v0.4.2) (2020-12-31)
