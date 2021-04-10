@@ -6,7 +6,9 @@ A set of tools to manage localStorage, sessionStorage and more that run on brows
 
 ## Main features
 
-* tiny, less than 1kB, and tree-shakable.
+* runs everywhere browsers, node and deno.
+
+* tiny, less than 1kB(gzip), and tree-shakable.
 
 * optional storage key versioning and namespace.
 
@@ -14,56 +16,37 @@ A set of tools to manage localStorage, sessionStorage and more that run on brows
 
 * optional validation of hydrated data.
 
-## Simple example
 
-```ts
-const storageConfig = {
-  version: "v2",
-  namespace: "user-conf"
-};
+## Project structure
 
-// persists on localStorage `[user-conf]i18n@v2` -> `{"locale":"es-ES","floatingPoint":"dot","unit":"metric"}`
-setStorageItem("i18n", { locale: 'es-ES', floatingPoint: 'dot', unit: 'metric' }, storageConfig);
+This project is organized as a monorepo, packages are available inside [/packages](/packages) folder.
 
-// returns `{"locale":"es-ES","floatingPoint":"dot","unit":"metric"}` hydrated
-getStorageItem("i18n", storageConfig);
+### Packages
 
-```
+* [storage-helpers](/packages/storage-helpers/README.md)
 
-## Installation
+### Examples
 
-### node
+* [validation-with-yup](/examples/validation-with-yup/README.md)
 
-Add [storage-helpers](https://www.npmjs.com/package/storage-helpers) to package.json
+
+## Developing
+
+This monorepo uses [pnpm](https://pnpm.js.org/en/).
+
+
+1. Install pnpm.
 
 ```bash
-  npm i storage-helpers --save
-```
-### deno
-
-[Import](https://deno.land/x/storage_helpers) directly in your typescript files
-
-```ts
-import { setStorageItem }  "https://deno.land/x/storage_helpers@v0.4.2/mod.ts";
+npm i -g pnpm
 ```
 
-### UMD build
+2. Install package dependencies.1
 
-html files
 
-```html
-  <script src="https://unpkg.com/storage-helpers@0.4.2/dist/storage_helpers.umd.production.min.js"></script>
+```bash
+pnpm i
 ```
-
----
-
-## Documentation
-
-* [Storage helpers docs (github.com)](packages/storage-helpers/docs/modules/storage_helpers.md)
-* [Storage helpers docs (doc.deno.land)](https://doc.deno.land/https/deno.land/x/storage_helpers/mod.ts)
-* [npm page](https://www.npmjs.com/package/storage-helpers)
-* [deno.land page](https://deno.land/x/storage_helpers)
-* [Changelog](packages/storage-helpers/CHANGELOG.md)
 
 ## License
 

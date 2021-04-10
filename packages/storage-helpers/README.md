@@ -6,6 +6,8 @@ A set of tools to manage localStorage, sessionStorage and more that run on brows
 
 ## Main features
 
+* runs everywhere browsers, node and deno.
+
 * tiny, less than 1kB, and tree-shakable.
 
 * optional storage key versioning and namespace.
