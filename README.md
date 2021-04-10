@@ -24,11 +24,12 @@ This project is organized as a monorepo, packages are available inside [/package
 ### Packages
 
 * [storage-helpers](/packages/storage-helpers/README.md)
+* [svelte-storage-helpers](/packages/svelte-storage-helpers/README.md)
 
 ### Examples
 
 * [validation-with-yup](/examples/validation-with-yup/README.md)
-
+* [svelte-ssr](/examples/svelte-ssr/README.md)
 
 ## Developing
 
