@@ -15,7 +15,8 @@
     "sessionStorage",
     "storage",
     "web",
-    "isomorphic"
+    "isomorphic",
+    "ssr"
   ],
   "engines": {
     "node": ">=10"
