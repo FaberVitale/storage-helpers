@@ -1,0 +1,67 @@
+{
+  "name": "svelte-storage-helpers",
+  "version": "1.0.0",
+  "author": "FaberVitale",
+  "license": "MIT",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/svelte-storage-helpers.esm.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsdx watch",
+    "prebuild": "rimraf ./dist",
+    "build": "tsdx build --format cjs,esm",
+    "test": "tsdx test",
+    "test:ci": "tsdx test --ci --coverage --maxWorkers=2",
+    "lint": "tsdx lint",
+    "prepare": "npm run build",
+    "type-coverage": "type-coverage"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint && type-coverage"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FaberVitale/storage-helpers.git",
+    "directory": "packages/svelte-storage-helpers"
+  },
+  "keywords": [
+    "svelte",
+    "localStorage",
+    "sessionStorage",
+    "storage",
+    "web",
+    "isomorphic"
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.9.1",
+    "eslint": "^7.22.0",
+    "husky": "^4.3.5",
+    "jest-localstorage-mock": "^2.4.3",
+    "rimraf": "^3.0.2",
+    "size-limit": "^4.10.1",
+    "standard-version": "^9.1.1",
+    "svelte": "^3.35.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "type-coverage": "^2.17.0",
+    "typedoc": "^0.20.0",
+    "typedoc-plugin-markdown": "^3.6.0",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "storage-helpers": "^0.5.0"
+  },
+  "peerDependencies": {
+    "svelte": "^3.1.0"
+  }
+}
