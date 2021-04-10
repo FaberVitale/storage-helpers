@@ -22,7 +22,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FaberVitale/storage-helpers.git"
+    "url": "https://github.com/FaberVitale/storage-helpers.git",
+    "directory": "packages/storage-helpers"
   },
   "sideEffects": false,
   "scripts": {
